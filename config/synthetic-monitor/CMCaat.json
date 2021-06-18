@@ -1,0 +1,64 @@
+{
+ "anomalyDetection": {
+  "loadingTimeThresholds": {
+   "enabled": false,
+   "thresholds": [
+    {
+     "type": "TOTAL",
+     "valueMs": 0
+    }
+   ]
+  },
+  "outageHandling": {
+   "globalOutage": true,
+   "localOutage": false,
+   "localOutagePolicy": {
+    "affectedLocations": 1,
+    "consecutiveRuns": 3
+   }
+  }
+ },
+ "automaticallyAssignedApps": [],
+ "createdFrom": "GUI",
+ "enabled": false,
+ "frequencyMin": 2,
+ "locations": [
+  "GEOLOCATION-3484C4AEE903624D",
+  "GEOLOCATION-F15152A6A059C277"
+ ],
+ "managementZones": [],
+ "manuallyAssignedApps": [],
+ "name": "{{.name}}",
+ "requests": [
+  {
+   "name": "moneyclaims.aat.platform.hmcts.net",
+   "sequenceNumber": 1
+  }
+ ],
+ "script": {
+  "requests": [
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "moneyclaims.aat.platform.hmcts.net",
+    "method": "GET",
+    "url": "http://moneyclaims.aat.platform.hmcts.net/",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   }
+  ],
+  "version": "1.0"
+ },
+ "tags": [],
+ "type": "HTTP"
+}
