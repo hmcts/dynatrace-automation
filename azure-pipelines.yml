@@ -1,0 +1,121 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+
+resources:
+  repositories:
+  - repository: cnp-azuredevops-libraries
+    type: github
+    ref: refs/heads/master
+    name: hmcts/cnp-azuredevops-libraries
+    endpoint: 'hmcts'
+
+variables:
+  - name: timeoutInMinutes
+    value: 60
+  - name: agentPool
+    value: ubuntu-18.04
+  - name: build
+    value: $(Build.BuildNumber)
+  - name: product
+    value: sds-platform
+  - name: component
+    value: dynatrace-management
+  - name: terraformInitSubscription
+    value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+
+parameters:
+  - name: overrideAction
+    type: string
+    default: plan
+    values:
+    - plan
+    - apply
+    - destroy
+    -
+
+  - name: dynatrace_environments
+    type: object
+    default:
+    - name: 'nonprod'
+      dependsOn: 'Precheck'
+
+stages:
+  - stage: Precheck
+    jobs:
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - task: AzureKeyVault@1
+            displayName: 'Read Dynatrace API token from Keyvault'
+            inputs:
+              runAsPreJob: false
+              ConnectedServiceName: 'azurerm-sandbox'
+              keyVaultName: 'infra-vault-nonprod'
+              secretsFilter: 'dynatrace-nonprod-api-key'
+
+          - task: Bash@3
+            displayName: 'Install Monaco CLI'
+            inputs:
+              filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
+
+          - task: Bash@3
+            displayName: 'Set Environment Variables'
+            inputs:
+              script: |
+                export NEW_CLI=1
+
+          - task: Bash@3
+            displayName: 'Monaco Deploy Dry Run'
+            targetType: inline
+            inputs:
+              script: 'monaco deploy --dry-run --environments dynatrace-environments.yaml -p config -v'
+
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-token'
+              serviceConnection: 'azurerm-sandbox'
+
+  - stage: TerraformPlanApply
+    dependsOn: Precheck
+    jobs:
+      - job:
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        steps:
+          - checkout: self
+          - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
+          - task: Bash@3
+            displayName: 'Install Monaco CLI'
+            inputs:
+              filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
+          - task: Bash@3
+            displayName: 'Monaco Deploy Config'
+            targetType: inline
+            inputs:
+              script: 'monaco deploy --environments dynatrace-environments.yaml -p config -v'
+
+  - ${{ each environment in parameters.dynatrace_environments }}:
+    - stage: ${{ environment.name }}
+      dependsOn: ${{ environment.dependsOn }}
+      jobs:
+        - job: TerraformPlanApply
+          pool:
+            vmImage: ${{ variables.agentPool }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          steps:
+          - template: steps/terraform.yaml@cnp-azuredevops-libraries
+            parameters:
+              overrideAction: ${{ parameters.overrideAction }}
+              environment: ${{ environment.name }}
+              component: ${{ variables.component }}
+              serviceConnection: "dts-management-${{ environment.name }}-intsvc"
+              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+              product: ${{ variables.product }}
