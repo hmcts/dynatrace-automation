@@ -54,7 +54,7 @@ stages:
             displayName: 'Read Dynatrace API token from Keyvault'
             inputs:
               runAsPreJob: false
-              ConnectedServiceName: 'azurerm-sandbox'
+              ConnectedServiceName: 'DCD-CFT-Sandbox'
               keyVaultName: 'infra-vault-nonprod'
               secretsFilter: 'dynatrace-nonprod-api-key'
 
