@@ -83,27 +83,6 @@ stages:
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'DCD-CFT-Sandbox'
 
-  - stage: TerraformPlanApply
-    dependsOn: Precheck
-    jobs:
-      - job:
-        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        steps:
-          - checkout: self
-          - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
-          - task: Bash@3
-            displayName: 'Install Monaco CLI'
-            inputs:
-              filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
-          - task: Bash@3
-            displayName: 'Monaco Deploy Config'
-            inputs:
-              targetType: inline
-              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
-              script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
-
   - ${{ each environment in parameters.dynatrace_environments }}:
     - stage: ${{ environment.name }}
       dependsOn: ${{ environment.dependsOn }}
