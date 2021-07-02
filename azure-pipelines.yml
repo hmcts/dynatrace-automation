@@ -108,11 +108,27 @@ stages:
     - stage: ${{ environment.name }}
       dependsOn: ${{ environment.dependsOn }}
       jobs:
-        - job: TerraformPlanApply
+        - job: Monaco_TerraformPlanApply
           pool:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
+          - checkout: self
+
+          - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
+
+          - task: Bash@3
+            displayName: 'Install Monaco CLI'
+            inputs:
+              filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
+
+          - task: Bash@3
+            displayName: 'Monaco Deploy Config'
+            inputs:
+              targetType: inline
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
+
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
