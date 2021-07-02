@@ -67,31 +67,13 @@ stages:
               filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
 
           - task: Bash@3
-            displayName: 'Set Environment Variables'
-            inputs:
-              targetType: inline
-              script: |
-                export NEW_CLI=1
-                pwd
-                ls -al
-                ls -al $(System.DefaultWorkingDirectory)
-
-          - task: Bash@3
-            displayName: 'Check Environment Variables'
-            inputs:
-              targetType: inline
-              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
-              script: |
-                pwd
-                echo $NEW_CLI
-
-
-          - task: Bash@3
             displayName: 'Monaco Deploy Dry Run'
             inputs:
               targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -v'
+              env: |
+                NEW_CLI=1
 
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
@@ -116,6 +98,8 @@ stages:
             displayName: 'Install Monaco CLI'
             inputs:
               filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
+              env: |
+                NEW_CLI=1
 
           - task: Bash@3
             displayName: 'Monaco Deploy Config'
@@ -123,6 +107,8 @@ stages:
               targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
+              env: |
+                NEW_CLI=1
 
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
