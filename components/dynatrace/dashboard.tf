@@ -1,6 +1,6 @@
 resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
   dashboard_metadata {
-    name = "Platform Ops On-call Dashboard Demo"
+    name = "Platform Ops On-call Dashboard Demo2"
     owner = "chris.orisawayi@hmcts.net"
     shared = true
   }
