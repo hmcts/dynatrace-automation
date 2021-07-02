@@ -8,7 +8,7 @@ terraform {
       version = "2.58.0"
     }
     dynatrace = {
-      source = "dynatrace-oss/dynatrace"
+      source  = "dynatrace-oss/dynatrace"
       version = "1.2.2"
     }
   }
