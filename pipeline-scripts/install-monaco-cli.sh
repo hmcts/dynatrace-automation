@@ -7,4 +7,4 @@ DOWNLOAD_URL="https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/rele
 sudo curl -SL --retry 3 $DOWNLOAD_URL -o /usr/local/bin/monaco
 sudo chmod +x /usr/local/bin/monaco
 
-monaco
+monaco --help
