@@ -20,7 +20,7 @@
  },
  "automaticallyAssignedApps": [],
  "createdFrom": "GUI",
- "enabled": false,
+ "enabled": true,
  "frequencyMin": 2,
  "locations": [
   "GEOLOCATION-3484C4AEE903624D",
@@ -31,7 +31,7 @@
  "name": "{{.name}}",
  "requests": [
   {
-   "name": "moneyclaims.aat.platform.hmcts.net",
+   "name": "moneyclaims.aat-demo.platform.hmcts.net",
    "sequenceNumber": 1
   }
  ],

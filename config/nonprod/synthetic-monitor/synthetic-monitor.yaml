@@ -1,4 +1,4 @@
 config:
 - CMCAAT: CMCaat.json
 CMCAAT:
-- name: CMC AAT Availability
+- name: CMC AAT Availability Demo
