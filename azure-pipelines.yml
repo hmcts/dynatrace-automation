@@ -35,7 +35,6 @@ parameters:
     - plan
     - apply
     - destroy
-    -
 
   - name: dynatrace_environments
     type: object
