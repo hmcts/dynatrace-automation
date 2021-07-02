@@ -1,5 +1,5 @@
 env = "nonprod"
 dynatrace_environment_id = "yrk32651"
 devops_key_vault = "infra-vault-nonprod"
-devops_key_vault_env = "dev"
+devops_key_vault_rg = "cnp-core-infra"
 devops_key_vault_subscription_id = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
