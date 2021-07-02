@@ -74,7 +74,8 @@ stages:
             displayName: 'Monaco Deploy Dry Run'
             targetType: inline
             inputs:
-              script: 'monaco deploy --dry-run --environments dynatrace-environments.yaml -p config -v'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
 
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
@@ -100,7 +101,8 @@ stages:
             displayName: 'Monaco Deploy Config'
             targetType: inline
             inputs:
-              script: 'monaco deploy --environments dynatrace-environments.yaml -p config -v'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
 
   - ${{ each environment in parameters.dynatrace_environments }}:
     - stage: ${{ environment.name }}
