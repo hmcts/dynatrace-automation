@@ -95,7 +95,7 @@ stages:
           - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
 
           - task: Bash@3
-            displayName: 'Monaco cli install
+            displayName: 'Monaco cli install'
             inputs:
               filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
 
