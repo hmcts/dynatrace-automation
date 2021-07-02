@@ -81,7 +81,7 @@ stages:
             parameters:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
-              serviceConnection: 'azurerm-sandbox'
+              serviceConnection: 'DCD-CFT-Sandbox'
 
   - stage: TerraformPlanApply
     dependsOn: Precheck
