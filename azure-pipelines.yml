@@ -66,13 +66,14 @@ stages:
           - task: Bash@3
             displayName: 'Set Environment Variables'
             inputs:
+              targetType: inline
               script: |
                 export NEW_CLI=1
 
           - task: Bash@3
             displayName: 'Monaco Deploy Dry Run'
-            targetType: inline
             inputs:
+              targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
 
@@ -98,8 +99,8 @@ stages:
               filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
           - task: Bash@3
             displayName: 'Monaco Deploy Config'
-            targetType: inline
             inputs:
+              targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
 
