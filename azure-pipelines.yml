@@ -50,6 +50,9 @@ stages:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
+          - checkout: self
+          - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
+
           - task: AzureKeyVault@1
             displayName: 'Read Dynatrace API token from Keyvault'
             inputs:
