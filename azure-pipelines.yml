@@ -72,6 +72,8 @@ stages:
               targetType: inline
               script: |
                 export NEW_CLI=1
+                pwd
+                ls -al
 
           - task: Bash@3
             displayName: 'Monaco Deploy Dry Run'
