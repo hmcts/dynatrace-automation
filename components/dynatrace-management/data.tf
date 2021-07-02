@@ -1,4 +1,5 @@
 data "azurerm_key_vault" "devops_key_vault" {
+  provider = "azurerm.dcd-cnp-${var.devops_key_vault_env}"
   name                = var.devops_key_vault
   resource_group_name = "dcd-cnp-${var.devops_key_vault_env}"
 }
