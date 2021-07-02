@@ -19,17 +19,10 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias                      = "dcd-cnp-dev"
+  alias                      = "devops-kv"
   skip_provider_registration = true
   features {}
-  subscription_id = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-}
-
-provider "azurerm" {
-  alias                      = "dcd-cnp-prod"
-  skip_provider_registration = true
-  features {}
-  subscription_id = "8999dec3-0104-4a27-94ee-6588559729d1"
+  subscription_id = var.devops_key_vault_subscription_id
 }
 
 provider "dynatrace" {
