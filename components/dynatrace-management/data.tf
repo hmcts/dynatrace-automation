@@ -1,6 +1,9 @@
-data "azurerm_client_config" "current" {}
+data "azurerm_key_vault" "devops_key_vault" {
+  name                = var.devops_key_vault
+  resource_group_name = "dcd-cnp-${var.devops_key_vault_env}"
+}
 
 data "azurerm_key_vault_secret" "dynatrace_api_token" {
   name         = "dynatrace-nonprod-api-key"
-  key_vault_id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/cnp-core-infra/providers/Microsoft.KeyVault/vaults/${var.devops_key_vault}"
+  key_vault_id = data.azurerm_key_vault.devops_key_vault.id
 }
