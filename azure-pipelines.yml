@@ -77,11 +77,21 @@ stages:
                 ls -al $(System.DefaultWorkingDirectory)
 
           - task: Bash@3
+            displayName: 'Check Environment Variables'
+            inputs:
+              targetType: inline
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: |
+                pwd
+                echo $NEW_CLI
+
+
+          - task: Bash@3
             displayName: 'Monaco Deploy Dry Run'
             inputs:
               targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
-              script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v'
+              script: 'monaco deploy --dry-run --environments config/dynatrace-environments.yaml -v'
 
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
