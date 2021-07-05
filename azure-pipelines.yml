@@ -116,6 +116,11 @@ stages:
 
           - task: Bash@3
             displayName: 'Monaco deploy config'
+            condition: |
+              or(
+              and(succeeded(), eq(variables['isMain'], true), eq('${{ parameters.overrideAction }}', 'apply')),
+              and(succeeded(), eq(variables['isMain'], true), eq(variables['isAutoTriggered'], true))
+              )
             inputs:
               targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
