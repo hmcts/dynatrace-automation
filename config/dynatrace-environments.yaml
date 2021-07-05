@@ -1,4 +1,4 @@
 nonprod:
     - name: "nonprod"
     - env-url: "https://yrk32651.live.dynatrace.com"
-    - env-token-name: "dynatrace-nonprod-api-key"
+    - env-token-name: "dynatrace_nonprod_api_key"
