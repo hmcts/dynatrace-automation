@@ -120,7 +120,7 @@ stages:
               targetType: inline
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: |
-                monaco deploy --dry-run --environments config/dynatrace-environments.yaml -p config -v
+                monaco deploy --dry-run --environments config/dynatrace-environments.yaml --project config/${{ environment.name }} -v
 
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:

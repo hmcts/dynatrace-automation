@@ -20,8 +20,8 @@
  },
  "automaticallyAssignedApps": [],
  "createdFrom": "GUI",
- "enabled": true,
- "frequencyMin": 2,
+ "enabled": "{{.enabled}}",
+ "frequencyMin": "{{.frequencyMin}}",
  "locations": [
   "GEOLOCATION-3484C4AEE903624D",
   "GEOLOCATION-F15152A6A059C277"
