@@ -1,4 +1,16 @@
 config:
-- CMCAAT: CMCaat.json
-CMCAAT:
-- name: CMC AAT Availability Demo
+- citizen-cmc-frontend: synthetic-monitor-values.json
+- legal-cmc-frontend: synthetic-monitor-values.json
+citizen-cmc-frontend:
+- name: "citizen frontend-cmc-monitoring"
+- enabled: "false"
+- description: "moneyclaims citizen frontend"
+- url: "https://www.moneyclaims.service.gov.uk/health"
+- managementZoneId: "config/nonprod/management-zone/CFT-CivilMoneyClaims-Staging.id"
+- cmc-frontend: synthetic-monitor-values.json
+legal-cmc-frontend:
+  - name: "legal frontend-cmc-monitoring"
+  - enabled: "false"
+  - description: "moneyclaims legal frontend"
+  - url: "https://www.moneyclaim-legal.platform.hmcts.net/health"
+  - managementZoneId: "config/nonprod/management-zone/CFT-CivilMoneyClaims-Staging.id"

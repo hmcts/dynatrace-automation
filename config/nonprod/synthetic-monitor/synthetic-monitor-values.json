@@ -1,4 +1,32 @@
 {
+ "name": "{{.name}}",
+ "frequencyMin": "5",
+ "enabled": "{{.enabled}}",
+ "type": "HTTP",
+ "script": {
+  "requests": [
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "{{.description}}",
+    "method": "GET",
+    "url": "{{.url}}",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   }
+  ],
+  "version": "1.0"
+ },
  "anomalyDetection": {
   "loadingTimeThresholds": {
    "enabled": false,
@@ -19,46 +47,17 @@
   }
  },
  "automaticallyAssignedApps": [],
- "createdFrom": "GUI",
- "enabled": "{{.enabled}}",
- "frequencyMin": "{{.frequencyMin}}",
  "locations": [
+  "GEOLOCATION-E7F41460B2A0E4B3",
   "GEOLOCATION-3484C4AEE903624D",
-  "GEOLOCATION-F15152A6A059C277"
+  "GEOLOCATION-F15152A6A059C277",
+  "GEOLOCATION-23ED2D8533B74344",
+  "GEOLOCATION-195845BAEB760941"
  ],
- "managementZones": [],
+ "managementZones": [
+  ",{{.managementZoneId}}"
+ ],
  "manuallyAssignedApps": [],
- "name": "{{.name}}",
- "requests": [
-  {
-   "name": "moneyclaims.aat-demo.platform.hmcts.net",
-   "sequenceNumber": 1
-  }
- ],
- "script": {
-  "requests": [
-   {
-    "configuration": {
-     "acceptAnyCertificate": true,
-     "followRedirects": true
-    },
-    "description": "moneyclaims.aat.platform.hmcts.net",
-    "method": "GET",
-    "url": "http://moneyclaims.aat.platform.hmcts.net/",
-    "validation": {
-     "rules": [
-      {
-       "passIfFound": false,
-       "type": "httpStatusesList",
-       "value": "\u003e=400"
-      }
-     ],
-     "rulesChaining": "or"
-    }
-   }
-  ],
-  "version": "1.0"
- },
- "tags": [],
- "type": "HTTP"
+
+ "tags": []
 }
