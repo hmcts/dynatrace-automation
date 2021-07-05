@@ -1,0 +1,4 @@
+config:
+- CFT-CivilMoneyClaims-Staging: management-zone-values.json
+CFT-CivilMoneyClaims-Staging:
+- name: "CFT - Civil Money Claims - Staging"
