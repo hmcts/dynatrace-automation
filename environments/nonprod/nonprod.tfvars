@@ -30,6 +30,32 @@ maintenance_windows = [
       }
     }
   },
+
+  {
+    name = "OOH-Test-Maintenance"
+    description = "On-call P1 test maintenance window"
+    type = "UNPLANNED"
+    suppress-synth_mon_exec = "true"
+    suppression = "DON'T_DETECT_PROBLEMS"
+    schedule = {
+      end = "2021-10-27 23:00"
+      recurrence_type = "ONCE"
+      start = "2021-10-27 22:00"
+      zone_id = "Europe/London"
+    },
+    scope = {
+      entities = []
+      matches = {
+        type = ""
+        tag_combination = ""
+        tags = {
+          context = ""
+          key = ""
+          value = ""
+        }
+      }
+    }
+  },
 ]
 
 dashboards = {
