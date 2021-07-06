@@ -5,4 +5,5 @@ variable "devops_key_vault" {}
 variable "devops_key_vault_rg" {}
 variable "devops_key_vault_subscription_id" {}
 variable "product" {}
+variable "maintenance_windows" {}
 
