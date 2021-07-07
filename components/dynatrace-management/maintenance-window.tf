@@ -23,7 +23,7 @@ resource "dynatrace_maintenance_window" "maintenance_window" {
         for_each = lookup(each.value.scope, "matches", [])
 
         content {
-          type = matches.value.type
+          type            = matches.value.type
           tag_combination = matches.value.tag_combination
 
           dynamic "tags" {
@@ -32,8 +32,8 @@ resource "dynatrace_maintenance_window" "maintenance_window" {
 
             content {
               context = tags.value.context
-              key = tags.value.key
-              value = tags.value.value
+              key     = tags.value.key
+              value   = tags.value.value
             }
           }
         }
