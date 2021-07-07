@@ -12,15 +12,31 @@ resource "dynatrace_maintenance_window" "maintenance_window" {
     start           = each.value.schedule.start
     zone_id         = each.value.schedule.zone_id
   }
-  scope {
-    entities = each.value.scope.entities
-    matches {
-      type            = each.value.scope.matches.type
-      tag_combination = each.value.scope.matches.tag_combination
-      tags {
-        context = each.value.scope.matches.tags.context
-        key     = each.value.scope.matches.tags.key
-        value   = each.value.scope.matches.tags.value
+  dynamic "scope" {
+    for_each = each.value.scope != {} ? [each.value.scope] : []
+
+    content {
+      entities = lookup(each.value.scope, "entities", [])
+
+      dynamic "matches" {
+        iterator = matches
+        for_each = lookup(each.value.scope, "matches", [])
+
+        content {
+          type = matches.value.type
+          tag_combination = matches.value.tag_combination
+
+          dynamic "tags" {
+            iterator = tags
+            for_each = lookup(matches.value, "tags", [])
+
+            content {
+              context = tags.value.context
+              key = tags.value.key
+              value = tags.value.value
+            }
+          }
+        }
       }
     }
   }
