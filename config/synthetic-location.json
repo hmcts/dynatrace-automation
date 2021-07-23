@@ -1,0 +1,16 @@
+{
+ "name": "{{.name}}",
+ "availabilityLocationOutage": false,
+ "availabilityNodeOutage": false,
+ "availabilityNotificationsEnabled": true,
+ "city": "{{.city}}",
+ "countryCode": "{{.countryCode}}",
+ "locationNodeOutageDelayInMinutes": 3,
+ "nodes": [
+  "1179678610",
+  "1280068776"
+ ],
+ "regionCode": "{{.regionCode}}",
+ "status": "{{.status}}",
+ "type": "PRIVATE"
+}
