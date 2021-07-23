@@ -1,4 +1,0 @@
-config:
-- CFT-CivilMoneyClaims-Staging: "../../../config/management-zone.json"
-CFT-CivilMoneyClaims-Staging:
-- name: "CFT - Civil Money Claims - Staging"

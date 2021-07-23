@@ -1,15 +1,155 @@
 config:
 - citizen-cmc-frontend: "../../../config/synthetic-monitor.json"
-- legal-cmc-frontend: "../../../config/synthetic-monitor.json"
+  divorce-apply-frontend: "../../../config/synthetic-monitor.json"
+  divorce-decree-absolute-frontend: "../../../config/synthetic-monitor.json"
+  employment-tribunals-frontend: "../../../config/synthetic-monitor.json"
+  employment-tribunals-apply-frontend: "../../../config/synthetic-monitor.json"
+  employment-tribunals-response-frontend: "../../../config/synthetic-monitor.json"
+  expertui-manage-case-frontend: "../../../config/synthetic-monitor.json"
+  expertui-manage-org-frontend: "../../../config/synthetic-monitor.json"
+  feesandpay-manage-payments-frontend: "../../../config/synthetic-monitor.json"
+  feesandpay-fees-register-frontend: "../../../config/synthetic-monitor.json"
+  feesandpay-paybubble-frontend: "../../../config/synthetic-monitor.json"
+  helpwithfees-frontend: "../../../config/synthetic-monitor.json"
+  legal-cmc-frontend: "../../../config/synthetic-monitor.json"
+  probate-apply-frontend: "../../../config/synthetic-monitor.json"
+  probate-caveats-frontend: "../../../config/synthetic-monitor.json"
+  sidam-frontend: "../../../config/synthetic-monitor.json"
+  sscs-submit-your-appeal-frontend: "../../../config/synthetic-monitor.json"
+  sscs-track-your-appeal-frontend: "../../../config/synthetic-monitor.json"
+  sscs-manage-your-appeal-frontend: "../../../config/synthetic-monitor.json"
+
 citizen-cmc-frontend:
 - name: "citizen frontend-cmc-monitoring"
-- enabled: "false"
-- description: "moneyclaims citizen frontend"
-- url: "https://www.moneyclaims.service.gov.uk/health"
-- managementZoneId: "environments/nonprod/management-zone/CFT-CivilMoneyClaims-Staging.id"
+  enabled: "false"
+  description: "moneyclaims citizen frontend"
+  url: "https://www.moneyclaims.service.gov.uk/health"
+  managementZoneId: ""
+
+divorce-apply-frontend:
+- name: "divorce-apply-frontend-monitoring"
+  enabled: "false"
+  description: "divorce apply frontend"
+  url: "https://www.apply-divorce.service.gov.uk/health"
+  managementZoneId: ""
+
+divorce-decree-absolute-frontend:
+- name: "divorce-decree-absolute-frontend-monitoring"
+  enabled: "false"
+  description: "divorce decree absolute frontend"
+  url: "https://www.decree-absolute.apply-divorce.service.gov.uk/health"
+  managementZoneId: ""
+
+employment-tribunals-frontend:
+- name: "employment-tribunals-frontend-monitoring"
+  enabled: "false"
+  description: "employment-tribunals frontend"
+  url: "https://employmenttribunals.service.gov.uk"
+  managementZoneId: ""
+
+employment-tribunals-apply-frontend:
+- name: "employment-tribunals-apply-frontend-monitoring"
+  enabled: "false"
+  description: "employment-tribunals apply frontend"
+  url: "https://www.employmenttribunals.service.gov.uk/apply"
+  managementZoneId: ""
+
+employment-tribunals-response-frontend:
+- name: "employment-tribunals-response-frontend-monitoring"
+  enabled: "false"
+  description: "employment-tribunals-response frontend"
+  url: "https://tribunal-response.employmenttribunals.service.gov.uk"
+  managementZoneId: ""
+
+expertui-manage-case-frontend:
+- name: "expertui-manage-case-frontend-monitoring"
+  enabled: "false"
+  description: "expertui-manage-case frontend"
+  url: "https://manage-case.platform.hmcts.net/health"
+  managementZoneId: ""
+
+expertui-manage-org-frontend:
+- name: "expertui-manage-org-frontend-monitoring"
+  enabled: "false"
+  description: "expertui-manage-org frontend"
+  url: "https://manage-org.platform.hmcts.net/health"
+  managementZoneId: ""
+
+feesandpay-manage-payments-frontend:
+- name: "feesandpay-manage-payments-frontend-monitoring"
+  enabled: "false"
+  description: "feesandpay manage payments frontend"
+  url: "https://manage-payments.platform.hmcts.net/health"
+  managementZoneId: ""
+
+feesandpay-fees-register-frontend:
+- name: "feesandpay-fees-register-frontend-monitoring"
+  enabled: "false"
+  description: "feesandpay fees register frontend"
+  url: "https://www.fees-register.platform.hmcts.net/health"
+  managementZoneId: ""
+
+feesandpay-paybubble-frontend:
+- name: "feesandpay-paybubble-frontend-monitoring"
+  enabled: "false"
+  description: "feesandpay paybubble frontend"
+  url: "https://paybubble.platform.hmcts.net/health"
+  managementZoneId: ""
+
+helpwithfees-frontend:
+- name: "helpwithfees-frontend-monitoring"
+  enabled: "false"
+  description: "helpwithfees frontend"
+  url: "https://helpwithcourtfees.service.gov.uk/"
+  managementZoneId: ""
+
 legal-cmc-frontend:
-  - name: "legal frontend-cmc-monitoring"
-  - enabled: "false"
-  - description: "moneyclaims legal frontend"
-  - url: "https://www.moneyclaim-legal.platform.hmcts.net/health"
-  - managementZoneId: "environments/nonprod/management-zone/CFT-CivilMoneyClaims-Staging.id"
+- name: "legal frontend-cmc-monitoring"
+  enabled: "false"
+  description: "moneyclaims legal frontend"
+  url: "https://www.moneyclaim-legal.platform.hmcts.net/health"
+  managementZoneId: ""
+
+probate-apply-frontend:
+- name: "probate-apply-frontend-monitoring"
+  enabled: "false"
+  description: "probate apply frontend"
+  url: "https://www.apply-for-probate.service.gov.uk/health"
+  managementZoneId: ""
+
+probate-caveats-frontend:
+- name: "probate-caveats-frontend-monitoring"
+  enabled: "false"
+  description: "probate caveats frontend"
+  url: "https://www.apply-for-probate.service.gov.uk/caveats/health"
+  managementZoneId: ""
+
+sidam-frontend:
+- name: "sidam frontend-commoncomponents-monitoring"
+  enabled: "false"
+  description: "sidam frontend"
+  url: "https://hmcts-access.service.gov.uk/health"
+  managementZoneId: ""
+
+sscs-submit-your-appeal-frontend:
+- name: "sscs frontend-submit-your-appeal monitoring"
+  enabled: "false"
+  description: "sscssya frontend"
+  url: "https://www.appeal-benefit-decision.service.gov.uk/health"
+  managementZoneId: ""
+
+sscs-track-your-appeal-frontend:
+- name: "sscs frontend-track-your-appeal monitoring"
+  enabled: "false"
+  description: "sscstya frontend"
+  url: "https://www.track-benefit-appeal.service.gov.uk/"
+  managementZoneId: ""
+
+sscs-manage-your-appeal-frontend:
+- name: "sscs frontend-manage-your-appeal monitoring"
+  enabled: "false"
+  description: "sscsmya frontend"
+  url: "https://www.manage.appeal-benefit-decision.service.gov.uk/health"
+  managementZoneId: ""
+
+
