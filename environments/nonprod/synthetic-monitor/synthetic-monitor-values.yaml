@@ -1,5 +1,6 @@
 config:
-- citizen-cmc-frontend: "../../../config/synthetic-monitor.json"
+- ccd-case-management-web: "../../../config/synthetic-monitor.json"
+  citizen-cmc-frontend: "../../../config/synthetic-monitor.json"
   divorce-apply-frontend: "../../../config/synthetic-monitor.json"
   divorce-decree-absolute-frontend: "../../../config/synthetic-monitor.json"
   employment-tribunals-frontend: "../../../config/synthetic-monitor.json"
@@ -18,6 +19,13 @@ config:
   sscs-submit-your-appeal-frontend: "../../../config/synthetic-monitor.json"
   sscs-track-your-appeal-frontend: "../../../config/synthetic-monitor.json"
   sscs-manage-your-appeal-frontend: "../../../config/synthetic-monitor.json"
+
+ccd-case-management-web:
+- name: "ccd case-management-web"
+  enabled: "false"
+  description: "ccd case management web"
+  url: "https://ccd.platform.hmcts.net/health"
+  managementZoneId: ""
 
 citizen-cmc-frontend:
 - name: "citizen frontend-cmc-monitoring"
