@@ -1,16 +1,18 @@
 {
- "name": "{{.name}}",
+ "name": "{{ .name }}",
  "availabilityLocationOutage": false,
  "availabilityNodeOutage": false,
  "availabilityNotificationsEnabled": true,
- "city": "{{.city}}",
- "countryCode": "{{.countryCode}}",
+ "city": "{{ .city }}",
+ "countryCode": "{{ .countryCode }}",
+ "latitude": "{{ .latitude }}",
+ "longitude": "{{ .longitude }}",
  "locationNodeOutageDelayInMinutes": 3,
  "nodes": [
   "1179678610",
   "1280068776"
  ],
- "regionCode": "{{.regionCode}}",
- "status": "{{.status}}",
+ "regionCode": "{{ .regionCode }}",
+ "status": "{{ .status }}",
  "type": "PRIVATE"
 }
