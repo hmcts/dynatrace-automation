@@ -1,0 +1,242 @@
+config:
+- appeal-benefit-decision: "../../../config/synthetic-monitor-public.json"
+  ccd-case-management-web-prod-health: "../../../config/synthetic-monitor-public.json"
+  cvp-availability: "../../../config/synthetic-monitor-public.json"
+  cvp-availability-admin-login: "../../../config/synthetic-monitor-public.json"
+  cvp-test-call-availability: "../../../config/synthetic-monitor-public.json"
+  divorce-apply-availability: "../../../config/synthetic-monitor-public.json"
+  divorce-da-availability: "../../../config/synthetic-monitor-public.json"
+  divorce-dn-availability: "../../../config/synthetic-monitor-public.json"
+  divorce-rfe-availability: "../../../config/synthetic-monitor-public.json"
+  employment-tribunal-availability: "../../../config/synthetic-monitor-public.json"
+  exui-manage-my-case-availability: "../../../config/synthetic-monitor-public.json"
+  exui-manage-my-organisation-availability: "../../../config/synthetic-monitor-public.json"
+  fact-availability: "../../../config/synthetic-monitor-public.json"
+  ocmc-cookie-banner-availability: "../../../config/synthetic-monitor-public.json"
+  ocmc-money-claims-availability: "../../../config/synthetic-monitor-public.json"
+  probate-availability: "../../../config/synthetic-monitor-public.json"
+  scheduing-and-listing-prod-availability: "../../../config/synthetic-monitor-public.json"
+  stop-probate-application-public: "../../../config/synthetic-monitor-public.json"
+
+  feesandpay-manage-payments-frontend: "../../../config/synthetic-monitor-public.json"
+  feesandpay-fees-register-frontend: "../../../config/synthetic-monitor-public.json"
+  feesandpay-paybubble-frontend: "../../../config/synthetic-monitor-public.json"
+  helpwithfees-frontend: "../../../config/synthetic-monitor-public.json"
+  legal-cmc-frontend: "../../../config/synthetic-monitor-public.json"
+  sscs-submit-your-appeal-frontend: "../../../config/synthetic-monitor-public.json"
+  sscs-track-your-appeal-frontend: "../../../config/synthetic-monitor-public.json"
+  sscs-manage-your-appeal-frontend: "../../../config/synthetic-monitor-public.json"
+
+appeal-benefit-decision:
+  - name: "Appeal Benefit Decision (SSCS) - Availability"
+    enabled: "false"
+    description: "ccd case management web"
+    url: "https://appeal-benefit-decision.service.gov.uk/language-preference"
+    managementZoneId: ""
+    skipDeployment: "false"
+
+ccd-case-management-web-prod-health:
+- name: "ccd-case-management-web Prod Health"
+  enabled: "true"
+  description: "ccd-case-management-web Prod Health"
+  url: "https://ccd.platform.hmcts.net/health"
+  managementZoneId: ""
+  skipDeployment: "false"
+
+cvp-availability:
+  - name: "CVP - Availability"
+    enabled: "false"
+    description: "CVP - Availability"
+    url: "https://join.meet.video.justice.gov.uk/HMCTS/#/?conference=test_call"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+cvp-availability-admin-login:
+  - name: "CVP - Availability (Admin Login URL)"
+    enabled: "false"
+    description: "CVP - Availability (Admin Login URL)"
+    url: "https://meet.video.justice.gov.uk/accounts/login/?next=/cloudroom/"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+cvp-test-call-availability:
+  - name: "CVP - Availability (Admin Login URL)"
+    enabled: "false"
+    description: "CVP - Availability (Admin Login URL)"
+    url: "https://join.meet.video.justice.gov.uk/HMCTS/#/?conference=test_call"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+divorce-apply-availability:
+  - name: "Divorce (Apply) - Availability"
+    enabled: "false"
+    description: "Divorce (Apply) - Availability"
+    url: "https://www.apply-divorce.service.gov.uk/"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+divorce-da-availability:
+  - name: "Divorce (DA) - Availability"
+    enabled: "false"
+    description: "Divorce (DA) - Availability"
+    url: "http://www.decree-absolute.apply-divorce.service.gov.uk"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+divorce-dn-availability:
+  - name: "Divorce (DN) - Availability"
+    enabled: "false"
+    description: "Divorce (DN) - Availability"
+    url: "http://www.decree-nisi.apply-divorce.service.gov.uk"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+divorce-rfe-availability:
+  - name: "Divorce (RFE) - Availability"
+    enabled: "false"
+    description: "Divorce (RFE) - Availability"
+    url: "http://www.respond-divorce.service.gov.uk"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+employment-tribunal-availability:
+  - name: "Employment Tribunal - Availability"
+    enabled: "false"
+    description: "Employment Tribunal - Availability"
+    url: "https://employmenttribunals.service.gov.uk/en/apply/application-number"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+exui-manage-my-case-availability:
+  - name: "EXUI Manage My Case - Availability"
+    enabled: "false"
+    description: "EXUI Manage My Case - Availability"
+    url: "https://manage-case.platform.hmcts.net/"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+exui-manage-my-organisation-availability:
+  - name: "EXUI Manage My Organisation - Availability"
+    enabled: "false"
+    description: "EXUI Manage My Organisation - Availability"
+    url: "http://Manage-org.platform.HMCTS.net"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+fact-availability:
+  - name: "FaCT - Availability"
+    enabled: "false"
+    description: "FaCT - Availability"
+    url: "https://www.find-court-tribunal.service.gov.uk/"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+ocmc-cookie-banner-availability:
+  - name: "OCMC - Cookie Banner Synthetic - Availability"
+    enabled: "false"
+    description: "OCMC - Cookie Banner Synthetic - Availability"
+    url: "https://www.moneyclaims.service.gov.uk/cookies"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+ocmc-money-claims-availability:
+  - name: "OCMC Money Claims - Availability"
+    enabled: "false"
+    description: "OCMC Money Claims - Availability"
+    url: "https://www.moneyclaims.service.gov.uk"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+probate-availability:
+  - name: "Probate - Availability"
+    enabled: "false"
+    description: "Probate - Availability"
+    url: "https://www.apply-for-probate.service.gov.uk/death-certificate"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+scheduing-and-listing-prod-availability:
+  - name: "Scheduling and Listings PROD - Availability"
+    enabled: "false"
+    description: "Scheduling and Listings PROD - Availability"
+    url: "https://list-assist.service.justice.gov.uk/"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+stop-probate-application-public:
+  - name: "Stop Probate Application (Public)"
+    enabled: "false"
+    description: "Stop Probate Application (Public)"
+    url: "https://www.apply-for-probate.service.gov.uk/caveats/health"
+    managementZoneId: ""
+    skipDeployment: "true"
+
+
+
+
+
+feesandpay-manage-payments-frontend:
+- name: "feesandpay-manage-payments-frontend-monitoring"
+  enabled: "false"
+  description: "feesandpay manage payments frontend"
+  url: "https://manage-payments.platform.hmcts.net/health"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+feesandpay-fees-register-frontend:
+- name: "feesandpay-fees-register-frontend-monitoring"
+  enabled: "false"
+  description: "feesandpay fees register frontend"
+  url: "https://www.fees-register.platform.hmcts.net/health"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+feesandpay-paybubble-frontend:
+- name: "feesandpay-paybubble-frontend-monitoring"
+  enabled: "false"
+  description: "feesandpay paybubble frontend"
+  url: "https://paybubble.platform.hmcts.net/health"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+helpwithfees-frontend:
+- name: "helpwithfees-frontend-monitoring"
+  enabled: "false"
+  description: "helpwithfees frontend"
+  url: "https://helpwithcourtfees.service.gov.uk/"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+legal-cmc-frontend:
+- name: "legal frontend-cmc-monitoring"
+  enabled: "false"
+  description: "moneyclaims legal frontend"
+  url: "https://www.moneyclaim-legal.platform.hmcts.net/health"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+sscs-submit-your-appeal-frontend:
+- name: "sscs frontend-submit-your-appeal monitoring"
+  enabled: "false"
+  description: "sscssya frontend"
+  url: "https://www.appeal-benefit-decision.service.gov.uk/health"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+sscs-track-your-appeal-frontend:
+- name: "sscs frontend-track-your-appeal monitoring"
+  enabled: "false"
+  description: "sscstya frontend"
+  url: "https://www.track-benefit-appeal.service.gov.uk/"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+sscs-manage-your-appeal-frontend:
+- name: "sscs frontend-manage-your-appeal monitoring"
+  enabled: "false"
+  description: "sscsmya frontend"
+  url: "https://www.manage.appeal-benefit-decision.service.gov.uk/health"
+  managementZoneId: ""
+  skipDeployment: "true"
+
+

@@ -1,6 +1,6 @@
 {
  "name": "{{.name}}",
- "frequencyMin": "5",
+ "frequencyMin": "1",
  "enabled": "{{.enabled}}",
  "type": "HTTP",
  "script": {
@@ -48,14 +48,10 @@
  },
  "automaticallyAssignedApps": [],
  "locations": [
-  "GEOLOCATION-E7F41460B2A0E4B3",
-  "GEOLOCATION-3484C4AEE903624D",
-  "GEOLOCATION-F15152A6A059C277",
-  "GEOLOCATION-23ED2D8533B74344",
-  "GEOLOCATION-195845BAEB760941"
+  "SYNTHETIC_LOCATION-CC3E4D2657A13D18"
  ],
  "managementZones": [
-  ",{{.managementZoneId}}"
+  "{{.managementZoneId}}"
  ],
  "manuallyAssignedApps": [],
 
