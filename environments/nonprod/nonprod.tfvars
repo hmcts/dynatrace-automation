@@ -18,7 +18,9 @@ maintenance_windows = [
       zone_id         = "Europe/London"
     }
     scope = {
-      entities = ["SERVICE-57BC0AF40537D300", "HOST-78090A0CDD645C1A"]
+      entities = [
+        "SERVICE-57BC0AF40537D300",
+      "HOST-78090A0CDD645C1A"]
       matches = [
         {
           type            = "SERVICE"
@@ -79,22 +81,1505 @@ maintenance_windows = [
   },
 ]
 
-dashboards = {
-  oncall = {
-    tiles = [
+management_zones = [
+  {
+    name = "CFT"
+    rules = [
       {
-        name       = "Markdown"
-        configured = true
-        markdown   = "## Monitored Service Title\nhttps://www.url.platform.hmcts.net/health\n\n"
-        tile_type  = "MARKDOWN"
-        bounds = {
-          height = 114
-          left   = 0
-          top    = 418
-          width  = 304
-        }
+        type    = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate   = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key     = "Department"
+                value   = "CFT"
+              }
+            }
+          },
+        ]
+      },
+      {
+        type    = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+          },
+            string = {
+              case_sensitive = true
+              negate         = false
+              operator       = "BEGINS_WITH"
+              value          = "CFT"
+            }
+          },
+        ]
+      },
+      {
+        type              = "AZURE"
+        enabled           = true
+        propagation_types = ["AZURE_TO_PG", "AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_name = {
+              negate   = false
+              operator = "CONTAINS"
+              value    = "DCD"
+          },
+            key = {
+              type      = "STATIC"
+              attribute = "AZURE_SUBSCRIPTION_NAME"
+            }
+          },
+        ]
+      },
+      {
+        type    = "KUBERNETES_CLUSTER"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+          },
+            string = {
+              case_sensitive = true
+              negate         = false
+              operator       = "CONTAINS"
+              value          = "cft"
+            }
+          },
+        ]
+      },
+      {
+        type    = "CLOUD_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate         = false
+              operator       = "CONTAINS"
+              value          = "cft"
+            }
+          },
+        ]
+      },
+      {
+        type    = "CLOUD_APPLICATION_NAMESPACE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate         = false
+              operator       = "CONTAINS"
+              value          = "cft"
+            }
+          },
+        ]
+      },
+      {
+        type    = "CUSTOM_DEVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "CUSTOM_DEVICE_TAGS"
+            },
+            tag = {
+              negate   = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key     = "Palo Alto - AAT"
+              }
+            }
+          },
+        ]
+      },
+      {
+        type              = "AZURE"
+        enabled           = true
+        propagation_types = ["AZURE_TO_PG", "AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate   = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key     = "Azure Entities"
+                value   = "CFT AAT"
+              }
+            },
+            key = {
+              type      = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          },
+        ]
+      },
+      {
+        type              = "AZURE"
+        enabled           = true
+        propagation_types = ["AZURE_TO_PG", "AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate   = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key     = "Azure Entities"
+                value   = "CFT Perf"
+              }
+            },
+            key = {
+              type      = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          },
+        ]
+      },
+      {
+        type              = "AZURE"
+        enabled           = true
+        propagation_types = ["AZURE_TO_PG", "AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate   = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key     = "Azure Entities"
+                value   = "CFT LDATA"
+              }
+            },
+            key = {
+              type      = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          },
+        ]
       }
+    ]
+  },
+  {
+    name = "CFT - Access Management - Perf"
+    rules = [
+      {
+        type    = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+            negate = false
+            operator = "EQUALS"
+            value = {
+              context = "CONTEXTLESS"
+              key = "Department"
+              value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "am"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "am "
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Access Management - Staging"
+    rules = [
+      {
+        type    = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type      = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "am"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "am "
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Bulk Scan - Perf"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "bsp"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "scan"
+            }
+          },
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "reform-scan"
+              }
+            }
+          }
+        ]
 
+
+      }
+    ]
+  },
+  {
+    name = "CFT - Bulkprint - Perf"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_PROCESS_GROUP_LIKE","SERVICE_TO_HOST_LIKE"]
+        conditions = [
+          {
+            process_metadata = {
+            attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+            dynamic_key = "KUBERNETES_FULL_POD_NAME"
+            },
+            string = {
+            case_sensitive = true
+            negate = false
+            operator = "BEGINS_WITH"
+            value = "rpe-send-letter"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_PROCESS_GROUP_LIKE","SERVICE_TO_HOST_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            }
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "send_letter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Bulkprint - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            process_metadata = {
+              attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+              dynamic_key = "KUBERNETES_FULL_POD_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "rpe-send-letter"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            }
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "send_letter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - CCD - Perf"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = false
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ccd"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "CCD"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "perf"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "ccd "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ccd"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "health"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - CCD - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = false
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "ccd "
+              }
+            }
+          },
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "ccd"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = false
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ccd "
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ccd"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = true
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = true
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "LDATA"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001306"
+              }
+            }
+          },
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001306"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001306"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Civil Money Claims - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = false
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "cmc "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = false
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "money-claims"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = false
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "Civil Money Claims"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = false
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "money-claims"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001246"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001246"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001246"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Civil Unspec - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "unspec"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "Camun"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "Manag"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "cmc "
+              }
+            }
+          }
+        ]
+      }
     ]
   }
-}
+
+]
+
+
