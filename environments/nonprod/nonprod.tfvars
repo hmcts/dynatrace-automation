@@ -1578,8 +1578,635 @@ management_zones = [
         ]
       }
     ]
-  }
+  },
+  {
+    name = "CFT - Divorce - Perf Test"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "divorce"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "div "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "EQUALS"
+              value = "CFT Divorce Perf Test"
+            }
+          },
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001242"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001242"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Divorce - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "div "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "EQUALS"
+              value = "cft divorce staging"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "divorce"
+              }
+            }
+          },
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001242"
+            }
+      }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001242"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Divorce AAT"
+    rules = [
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "CFT Divorce AAT"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Divorce Demo"
+    rules = [
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "EQUALS"
+              value = "CFT Divorce Demo"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - ECM - LDATA"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ethos"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "LDATA"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "ecm"
+            }
+          },
+          {
 
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "CFT CCD"
+            }
+          },
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "CFT XUI"
+            }
+          },
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "ethos"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TECHNOLOGY"
+            },
+            tech = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                type = "ELASTIC_SEARCH"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ethosldata"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 ]
 
 

@@ -15,7 +15,7 @@ resource "dynatrace_management_zone" "management-zone" {
         content {
           dynamic "key" {
             iterator = key
-            for_each = { for k,v in conditions.value : k => v if k == "key"}
+            for_each = { for k,v in conditions.value : k => v if k == "key" }
             content {
               attribute = key.value.attribute
               type      = key.value.type
@@ -34,6 +34,18 @@ resource "dynatrace_management_zone" "management-zone" {
               }
             }
           }
+          dynamic "tech" {
+            iterator = tech
+            for_each = { for k,v in conditions.value : k => v if k == "tech" }
+            content {
+              negate   = tech.value.negate
+              operator = tech.value.operator
+              value {
+                type = tech.value.value.type
+                verbatim_type     = lookup(tech.value.value, "verbatim_type", "")
+              }
+            }
+          }
           dynamic "indexed_tag" {
             iterator = indexed_tag
             for_each = { for k,v in conditions.value : k => v if k == "indexed_tag" }
@@ -49,7 +61,7 @@ resource "dynatrace_management_zone" "management-zone" {
           }
           dynamic "string" {
             iterator = string
-            for_each = { for k,v in conditions.value : k => v if k == "string"}
+            for_each = { for k,v in conditions.value : k => v if k == "string" }
             content {
               case_sensitive = string.value.case_sensitive
               negate         = string.value.negate
@@ -59,7 +71,7 @@ resource "dynatrace_management_zone" "management-zone" {
           }
           dynamic "service_type" {
             iterator = service_type
-            for_each = { for k,v in conditions.value : k => v if k == "service_type"}
+            for_each = { for k,v in conditions.value : k => v if k == "service_type" }
             content {
               negate         = service_type.value.negate
               operator       = service_type.value.operator
@@ -68,7 +80,7 @@ resource "dynatrace_management_zone" "management-zone" {
           }
           dynamic "indexed_name" {
             iterator = indexed_name
-            for_each = { for k,v in conditions.value : k => v if k == "indexed_name"}
+            for_each = { for k,v in conditions.value : k => v if k == "indexed_name" }
             content {
               negate         = indexed_name.value.negate
               operator       = indexed_name.value.operator
@@ -77,7 +89,7 @@ resource "dynatrace_management_zone" "management-zone" {
           }
           dynamic "process_metadata" {
             iterator = process_metatdata
-            for_each = { for k,v in conditions.value : k => v if k == "process_metadata"}
+            for_each = { for k,v in conditions.value : k => v if k == "process_metadata" }
             content {
               attribute = process_metatdata.value.attribute
               dynamic_key      = process_metatdata.value.dynamic_key
