@@ -29,7 +29,7 @@ config:
 
 appeal-benefit-decision:
   - name: "Appeal Benefit Decision (SSCS) - Availability"
-    enabled: "true"
+    enabled: "false"
     description: "Appeal Benefit Decision (SSCS) - Availability"
     url: "https://www.appeal-benefit-decision.service.gov.uk/language-preference"
     managementZoneId: ""
@@ -37,7 +37,7 @@ appeal-benefit-decision:
 
 ccd-case-management-web-prod-health:
 - name: "ccd-case-management-web Prod Health"
-  enabled: "true"
+  enabled: "false"
   description: "ccd-case-management-web Prod Health"
   url: "https://www.ccd.platform.hmcts.net/health"
   managementZoneId: ""
