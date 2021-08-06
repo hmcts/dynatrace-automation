@@ -29,9 +29,9 @@ config:
 
 appeal-benefit-decision:
   - name: "Appeal Benefit Decision (SSCS) - Availability"
-    enabled: "false"
-    description: "ccd case management web"
-    url: "https://appeal-benefit-decision.service.gov.uk/language-preference"
+    enabled: "true"
+    description: "Appeal Benefit Decision (SSCS) - Availability"
+    url: "https://www.appeal-benefit-decision.service.gov.uk/language-preference"
     managementZoneId: ""
     skipDeployment: "false"
 
@@ -39,7 +39,7 @@ ccd-case-management-web-prod-health:
 - name: "ccd-case-management-web Prod Health"
   enabled: "true"
   description: "ccd-case-management-web Prod Health"
-  url: "https://ccd.platform.hmcts.net/health"
+  url: "https://www.ccd.platform.hmcts.net/health"
   managementZoneId: ""
   skipDeployment: "false"
 
@@ -49,7 +49,7 @@ cvp-availability:
     description: "CVP - Availability"
     url: "https://join.meet.video.justice.gov.uk/HMCTS/#/?conference=test_call"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 cvp-availability-admin-login:
   - name: "CVP - Availability (Admin Login URL)"
@@ -57,15 +57,15 @@ cvp-availability-admin-login:
     description: "CVP - Availability (Admin Login URL)"
     url: "https://meet.video.justice.gov.uk/accounts/login/?next=/cloudroom/"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 cvp-test-call-availability:
-  - name: "CVP - Availability (Admin Login URL)"
+  - name: "CVP_Test_Call_Availability"
     enabled: "false"
-    description: "CVP - Availability (Admin Login URL)"
+    description: "CVP_Test_Call_Availability"
     url: "https://join.meet.video.justice.gov.uk/HMCTS/#/?conference=test_call"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 divorce-apply-availability:
   - name: "Divorce (Apply) - Availability"
@@ -73,7 +73,7 @@ divorce-apply-availability:
     description: "Divorce (Apply) - Availability"
     url: "https://www.apply-divorce.service.gov.uk/"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 divorce-da-availability:
   - name: "Divorce (DA) - Availability"
@@ -81,7 +81,7 @@ divorce-da-availability:
     description: "Divorce (DA) - Availability"
     url: "http://www.decree-absolute.apply-divorce.service.gov.uk"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 divorce-dn-availability:
   - name: "Divorce (DN) - Availability"
@@ -89,7 +89,7 @@ divorce-dn-availability:
     description: "Divorce (DN) - Availability"
     url: "http://www.decree-nisi.apply-divorce.service.gov.uk"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 divorce-rfe-availability:
   - name: "Divorce (RFE) - Availability"
@@ -97,7 +97,7 @@ divorce-rfe-availability:
     description: "Divorce (RFE) - Availability"
     url: "http://www.respond-divorce.service.gov.uk"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 employment-tribunal-availability:
   - name: "Employment Tribunal - Availability"
@@ -105,7 +105,7 @@ employment-tribunal-availability:
     description: "Employment Tribunal - Availability"
     url: "https://employmenttribunals.service.gov.uk/en/apply/application-number"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 exui-manage-my-case-availability:
   - name: "EXUI Manage My Case - Availability"
@@ -113,7 +113,7 @@ exui-manage-my-case-availability:
     description: "EXUI Manage My Case - Availability"
     url: "https://manage-case.platform.hmcts.net/"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 exui-manage-my-organisation-availability:
   - name: "EXUI Manage My Organisation - Availability"
@@ -121,7 +121,7 @@ exui-manage-my-organisation-availability:
     description: "EXUI Manage My Organisation - Availability"
     url: "http://Manage-org.platform.HMCTS.net"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 fact-availability:
   - name: "FaCT - Availability"
@@ -129,7 +129,7 @@ fact-availability:
     description: "FaCT - Availability"
     url: "https://www.find-court-tribunal.service.gov.uk/"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 ocmc-cookie-banner-availability:
   - name: "OCMC - Cookie Banner Synthetic - Availability"
@@ -137,7 +137,7 @@ ocmc-cookie-banner-availability:
     description: "OCMC - Cookie Banner Synthetic - Availability"
     url: "https://www.moneyclaims.service.gov.uk/cookies"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 ocmc-money-claims-availability:
   - name: "OCMC Money Claims - Availability"
@@ -145,7 +145,7 @@ ocmc-money-claims-availability:
     description: "OCMC Money Claims - Availability"
     url: "https://www.moneyclaims.service.gov.uk"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 probate-availability:
   - name: "Probate - Availability"
@@ -153,7 +153,7 @@ probate-availability:
     description: "Probate - Availability"
     url: "https://www.apply-for-probate.service.gov.uk/death-certificate"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 scheduing-and-listing-prod-availability:
   - name: "Scheduling and Listings PROD - Availability"
@@ -161,7 +161,7 @@ scheduing-and-listing-prod-availability:
     description: "Scheduling and Listings PROD - Availability"
     url: "https://list-assist.service.justice.gov.uk/"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 stop-probate-application-public:
   - name: "Stop Probate Application (Public)"
@@ -169,7 +169,7 @@ stop-probate-application-public:
     description: "Stop Probate Application (Public)"
     url: "https://www.apply-for-probate.service.gov.uk/caveats/health"
     managementZoneId: ""
-    skipDeployment: "true"
+    skipDeployment: "false"
 
 
 
