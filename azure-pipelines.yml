@@ -114,6 +114,14 @@ stages:
               script: |
                 echo "##vso[task.setvariable variable=NEW_CLI]1"
 
+          - task: AzureKeyVault@1
+            displayName: 'Read Dynatrace api token from keyvault'
+            inputs:
+              runAsPreJob: false
+              ConnectedServiceName: 'DCD-CFT-Sandbox'
+              keyVaultName: 'infra-vault-nonprod'
+              secretsFilter: 'dynatrace-nonprod-api-key'
+
           - task: Bash@3
             displayName: 'Monaco deploy config'
             condition: |
