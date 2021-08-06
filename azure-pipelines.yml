@@ -140,9 +140,9 @@ stages:
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
               ${{ if eq( '${{ environment.name }}', 'nonprod') }}:
-                environment: "stg"
+                environment: 'stg'
               ${{ if ne( '${{ environment.name }}', 'nonprod') }}:
-                environment: ${{ environment.name }}
+                environment: 'stgg'
               component: ${{ variables.component }}
               serviceConnection: "dts-management-${{ environment.name }}-intsvc"
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
