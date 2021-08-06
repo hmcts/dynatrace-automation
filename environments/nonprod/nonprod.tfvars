@@ -2089,9 +2089,6 @@ management_zones = [
               operator = "CONTAINS"
               value = "ecm"
             }
-          },
-          {
-
           }
         ]
       },
