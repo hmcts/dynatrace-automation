@@ -1,0 +1,59 @@
+{
+ "name": "{{.name}}",
+ "frequencyMin": "15",
+ "enabled": "{{.enabled}}",
+ "type": "HTTP",
+ "script": {
+  "requests": [
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "{{.description}}",
+    "method": "GET",
+    "url": "{{.url}}",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   }
+  ],
+  "version": "1.0"
+ },
+ "anomalyDetection": {
+  "loadingTimeThresholds": {
+   "enabled": false,
+   "thresholds": [
+    {
+     "type": "TOTAL",
+     "valueMs": 0
+    }
+   ]
+  },
+  "outageHandling": {
+   "globalOutage": true,
+   "localOutage": false,
+   "localOutagePolicy": {
+    "affectedLocations": 1,
+    "consecutiveRuns": 3
+   }
+  }
+ },
+ "automaticallyAssignedApps": [],
+ "locations": [
+  "SYNTHETIC_LOCATION-CC3E4D2657A13D18"
+ ],
+ "managementZones": [
+  "{{.managementZoneId}}"
+ ],
+ "manuallyAssignedApps": [],
+
+ "tags": []
+}

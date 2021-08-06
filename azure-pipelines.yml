@@ -1,0 +1,137 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+
+resources:
+  repositories:
+  - repository: cnp-azuredevops-libraries
+    type: github
+    ref: refs/heads/master
+    name: hmcts/cnp-azuredevops-libraries
+    endpoint: 'hmcts'
+
+variables:
+  - name: timeoutInMinutes
+    value: 60
+  - name: agentPool
+    value: ubuntu-18.04
+  - name: build
+    value: $(Build.BuildNumber)
+  - name: product
+    value: sds-platform
+  - name: component
+    value: dynatrace-management
+  - name: terraformInitSubscription
+    value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+
+parameters:
+  - name: overrideAction
+    type: string
+    default: plan
+    values:
+    - plan
+    - apply
+    - destroy
+
+  - name: dynatrace_environments
+    type: object
+    default:
+    - name: 'nonprod'
+      dependsOn: 'Precheck'
+
+stages:
+  - stage: Precheck
+    jobs:
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - checkout: self
+          - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
+
+          - task: AzureKeyVault@1
+            displayName: 'Read Dynatrace api token from keyvault'
+            inputs:
+              runAsPreJob: false
+              ConnectedServiceName: 'DCD-CFT-Sandbox'
+              keyVaultName: 'infra-vault-nonprod'
+              secretsFilter: 'dynatrace-nonprod-api-key'
+
+          - task: Bash@3
+            displayName: 'Monaco cli install'
+            inputs:
+              filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
+
+          - task: Bash@3
+            displayName: 'Set environment variables'
+            inputs:
+              targetType: inline
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: |
+                echo "##vso[task.setvariable variable=NEW_CLI]1"
+
+          - task: Bash@3
+            displayName: 'Monaco deploy dry run'
+            inputs:
+              targetType: inline
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: |
+                monaco deploy --dry-run --environments config/dynatrace-environments.yaml -v
+
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-token'
+              serviceConnection: 'DCD-CFT-Sandbox'
+
+  - ${{ each environment in parameters.dynatrace_environments }}:
+    - stage: ${{ environment.name }}
+      dependsOn: ${{ environment.dependsOn }}
+      jobs:
+        - job: Monaco_TerraformPlanApply
+          pool:
+            vmImage: ${{ variables.agentPool }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          steps:
+          - checkout: self
+
+          - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
+
+          - task: Bash@3
+            displayName: 'Monaco cli install'
+            inputs:
+              filePath: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)/pipeline-scripts/install-monaco-cli.sh'
+
+          - task: Bash@3
+            displayName: 'Set environment variables'
+            inputs:
+              targetType: inline
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: |
+                echo "##vso[task.setvariable variable=NEW_CLI]1"
+
+          - task: Bash@3
+            displayName: 'Monaco deploy config'
+            condition: |
+              or(
+              and(succeeded(), eq(variables['isMain'], true), eq('${{ parameters.overrideAction }}', 'apply')),
+              and(succeeded(), eq(variables['isMain'], true), eq(variables['isAutoTriggered'], true))
+              )
+            inputs:
+              targetType: inline
+              workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
+              script: |
+                monaco deploy --environments config/dynatrace-environments.yaml --project config/${{ environment.name }} -v
+
+          - template: steps/terraform.yaml@cnp-azuredevops-libraries
+            parameters:
+              overrideAction: ${{ parameters.overrideAction }}
+              environment: ${{ environment.name }}
+              component: ${{ variables.component }}
+              serviceConnection: "dts-management-${{ environment.name }}-intsvc"
+              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+              product: ${{ variables.product }}

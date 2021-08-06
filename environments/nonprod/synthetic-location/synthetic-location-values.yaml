@@ -1,0 +1,12 @@
+config:
+- BirminghamCTSC: "../../../config/synthetic-location.json"
+
+BirminghamCTSC:
+- name: "Birmingham CTSC"
+  city: "Birmingham"
+  countryCode: "GB"
+  latitude: "52.5026"
+  longitude: "-1.7815"
+  regionCode: "A7"
+  status: "ENABLED"
+  skipDeployment: "false"
