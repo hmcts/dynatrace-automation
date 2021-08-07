@@ -140,7 +140,7 @@ stages:
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
               ${{ if eq( environment['name'], 'nonprod') }}:
-                environment: 'stg'
+                environment: 'mgmt'
               ${{ if ne( environment['name'], 'nonprod') }}:
                 environment: ${{ environment.name }}
               component: ${{ variables.component }}
