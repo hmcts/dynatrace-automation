@@ -39,7 +39,7 @@ parameters:
   - name: dynatrace_environments
     type: object
     default:
-    - name: 'stg'
+    - name: 'nonprod'
       dependsOn: 'Precheck'
 
 stages:
