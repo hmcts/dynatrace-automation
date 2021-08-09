@@ -139,7 +139,10 @@ stages:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
-              environment: ${{ environment.name }}
+              ${{ if eq( environment['name'], 'nonprod') }}:
+                environment: 'stg'
+              ${{ if ne( environment['name'], 'nonprod') }}:
+                environment: ${{ environment.name }}
               component: ${{ variables.component }}
               serviceConnection: "dts-management-${{ environment.name }}-intsvc"
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
