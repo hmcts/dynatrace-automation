@@ -39,7 +39,7 @@ parameters:
   - name: dynatrace_environments
     type: object
     default:
-    - name: 'nonprod'
+    - name: 'stg'
       dependsOn: 'Precheck'
 
 stages:
@@ -139,10 +139,7 @@ stages:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
-              ${{ if eq( environment['name'], 'nonprod') }}:
-                environment: 'mgmt'
-              ${{ if ne( environment['name'], 'nonprod') }}:
-                environment: ${{ environment.name }}
+              environment: ${{ environment.name }}
               component: ${{ variables.component }}
               serviceConnection: "dts-management-${{ environment.name }}-intsvc"
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
