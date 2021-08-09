@@ -3381,9 +3381,6 @@ management_zones = [
       }
     ]
   },
-  {
-
-  }
 ]
 
 
