@@ -39,7 +39,7 @@ parameters:
   - name: dynatrace_environments
     type: object
     default:
-    - name: 'nonprod'
+    - name: 'stg'
       dependsOn: 'Precheck'
 
 stages:
@@ -121,7 +121,7 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: |
                 echo "##vso[task.setvariable variable=NEW_CLI]1"
-                echo "##vso[task.setvariable variable=DYNATRACE_NONPROD_API_KEY]$(dynatrace-nonprod-api-key)"
+                echo "##vso[task.setvariable variable=DYNATRACE_${{ environment.name }}_API_KEY]$(dynatrace-${{ environment.name }}-api-key)"
 
           - task: Bash@3
             displayName: 'Monaco deploy config'
@@ -139,11 +139,11 @@ stages:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
-              ${{ if eq( environment['name'], 'nonprod') }}:
-                environment: 'stg'
-              ${{ if ne( environment['name'], 'nonprod') }}:
-                environment: ${{ environment.name }}
+              environment: ${{ environment.name }}
               component: ${{ variables.component }}
-              serviceConnection: "dts-management-${{ environment.name }}-intsvc"
+              ${{ if eq( environment['name'], 'stg') }}:
+                serviceConnection: "dts-management-nonprod-intsvc"
+              ${{ if eq( environment['name'], 'prod') }}:
+                serviceConnection: "dts-management-prod-intsvc"
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
