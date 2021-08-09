@@ -59,7 +59,7 @@ stages:
               runAsPreJob: false
               ConnectedServiceName: 'DCD-CFT-Sandbox'
               keyVaultName: 'infra-vault-nonprod'
-              secretsFilter: 'dynatrace-nonprod-api-key'
+              secretsFilter: 'dynatrace-stg-api-key'
 
           - task: Bash@3
             displayName: 'Monaco cli install'
@@ -112,7 +112,7 @@ stages:
               runAsPreJob: false
               ConnectedServiceName: 'DCD-CFT-Sandbox'
               keyVaultName: 'infra-vault-nonprod'
-              secretsFilter: 'dynatrace-nonprod-api-key'
+              secretsFilter: 'dynatrace-stg-api-key'
 
           - task: Bash@3
             displayName: 'Set environment variables'
