@@ -2762,46 +2762,43 @@ management_zones = [
                 value = "dm "
               }
             }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "dm-store"
+              }
+            }
           },
           {
-            type = "SERVICE"
-            enabled = true
-            propagation_types = [
-              "SERVICE_TO_HOST_LIKE",
-              "SERVICE_TO_PROCESS_GROUP_LIKE"
-            ]
-            conditions = [
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "NS"
-                    value = "dm-store"
-                  }
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "Environment"
-                    value = "PERF"
-                  }
-                }
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
               }
-            ]
+            }
           }
         ]
       }
@@ -3113,82 +3110,82 @@ management_zones = [
                 value = "family-public-law"
               }
             }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
           },
           {
-            type = "SERVICE"
-            enabled = true
-            propagation_types = [
-              "SERVICE_TO_PROCESS_GROUP_LIKE",
-              "SERVICE_TO_HOST_LIKE"
-            ]
-            conditions = [
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "Environment"
-                    value = "PERF"
-                  }
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "SVCOFF"
-                    value = "SVCOFF0001260"
-                  }
-                }
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001260"
               }
-            ]
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
           },
           {
-            type = "SERVICE"
-            enabled = true
-            propagation_types = [
-              "SERVICE_TO_PROCESS_GROUP_LIKE",
-              "SERVICE_TO_HOST_LIKE"
-            ]
-            conditions = [
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TYPE"
-                },
-                service_type = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = "DATABASE_SERVICE"
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "SVCOFF"
-                    value = "SVCOFF0001260"
-                  }
-                }
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001260"
               }
-            ]
+            }
           }
         ]
       }
