@@ -94,7 +94,7 @@ stages:
       - name: altEnvironment
         ${{ if eq( environment['name'], 'stg') }}:
           value: 'nonprod'
-        ${{ if ne( environment['name'], 'prod') }}:
+        ${{ if eq( environment['name'], 'prod') }}:
           value: 'prod'
 
       dependsOn: ${{ environment.dependsOn }}
@@ -129,6 +129,7 @@ stages:
               script: |
                 echo "##vso[task.setvariable variable=NEW_CLI]1"
                 echo "##vso[task.setvariable variable=DYNATRACE_${{ upper(parameters.environment) }}_API_KEY]$(dynatrace-${{ parameters.environment }}-api-key)"
+                echo "altEnv is ${{ variables.altEnvironment }}"
 
           - task: Bash@3
             displayName: 'Monaco deploy config'
