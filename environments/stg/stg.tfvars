@@ -4572,6 +4572,7 @@ management_zones = [
           }
         ]
       }
+
     ]
   },
   {
@@ -4846,112 +4847,112 @@ management_zones = [
                 value = "AAT"
               }
             }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
           },
           {
-            type = "SERVICE"
-            enabled = true
-            propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
-            conditions = [
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TYPE"
-                },
-                service_type = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = "DATABASE_SERVICE"
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_DATABASE_HOST_NAME"
-                },
-                string = {
-                  case_sensitive = false
-                  negate = false
-                  operator = "CONTAINS"
-                  value = "idam"
-                }
-              },
-            ]
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_HOST_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "idam"
+            }
+          },
+        ]
+      },
+      {
+        type = "CLOUD_APPLICATION_NAMESPACE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "CLOUD_APPLICATION_NAMESPACE_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "idam"
+            }
           },
           {
-            type = "CLOUD_APPLICATION_NAMESPACE"
-            enabled = true
-            conditions = [
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "CLOUD_APPLICATION_NAMESPACE_NAME"
-                },
-                string = {
-                  case_sensitive = true
-                  negate = false
-                  operator = "EQUALS"
-                  value = "idam"
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "KUBERNETES_CLUSTER_NAME"
-                },
-                string = {
-                  case_sensitive = true
-                  negate = false
-                  operator = "CONTAINS"
-                  value = "aat"
-                }
+            key = {
+              type = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "HOST"
+        enabled = true
+        conditions = [
+          {
+            entity = {
+              negate = false
+              operator = "EQUALS"
+              value = "HOST_GROUP-BCCF66C30BE3C7F8"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_ID"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "IDAM"
               }
-            ]
+            }
           },
           {
-            type = "HOST"
-            enabled = true
-            conditions = [
-              {
-                entity = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = "HOST_GROUP-BCCF66C30BE3C7F8"
-                },
-                key = {
-                  type = "STATIC"
-                  attribute = "HOST_GROUP_ID"
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "HOST_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "TAG_KEY_EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "IDAM"
-                  }
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "HOST_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "Environment"
-                    value = "AAT"
-                  }
-                }
+            key = {
+              type = "STATIC"
+              attribute = "HOST_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
               }
-            ]
+            }
           }
         ]
       }
