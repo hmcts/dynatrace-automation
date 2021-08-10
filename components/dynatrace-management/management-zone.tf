@@ -108,9 +108,9 @@ resource "dynatrace_management_zone" "management-zone" {
             iterator = entity
             for_each = { for k, v in conditions.value : k => v if k == "entity" }
             content {
-              operator       = entity.value.operator
-              negate         = entity.value.negate
-              value          = entity.value.value
+              operator = entity.value.operator
+              negate   = entity.value.negate
+              value    = entity.value.value
             }
           }
           dynamic "key" {
