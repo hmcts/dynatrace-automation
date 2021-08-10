@@ -6446,41 +6446,42 @@ management_zones = [
                 value = "rd"
               }
             }
-          },
-          {
-            type = "SERVICE"
-            enabled = true
-            propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
-            conditions = [
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TYPE"
-                },
-                service_type = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = "DATABASE_SERVICE"
-                }
-              },
-              {
-                key = {
-                  type = "STATIC"
-                  attribute = "SERVICE_TAGS"
-                },
-                tag = {
-                  negate = false
-                  operator = "EQUALS"
-                  value = {
-                    context = "CONTEXTLESS"
-                    key = "CFT Database"
-                    value = "rd "
-                  }
-                }
-              }
-            ]
           }
 
+
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "rd "
+              }
+            }
+          }
         ]
       }
     ]
@@ -6583,6 +6584,246 @@ management_zones = [
                 context = "CONTEXTLESS"
                 key = "CFT Database"
                 value = "rd "
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - SSCS - Perf"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "sscs "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "sscs"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "sscs"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "perf"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - SSCS - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_PROCESS_GROUP_LIKE","SERVICE_TO_HOST_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "sscs "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "sscs"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_SERVICE","PROCESS_GROUP_TO_HOST"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "sscs"
               }
             }
           }
