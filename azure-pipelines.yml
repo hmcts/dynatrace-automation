@@ -117,7 +117,7 @@ stages:
             displayName: 'Read Dynatrace api token from keyvault'
             inputs:
               runAsPreJob: false
-              ConnectedServiceName: 'dts-management-{{ environment.altEnvironment }}-intsvc'
+              ConnectedServiceName: 'dts-management-{{ variables.altEnvironment }}-intsvc'
               keyVaultName: 'infra-vault-{{ variables.altEnvironment }}'
               secretsFilter: 'dynatrace-{{ variables.altEnvironment }}-api-key'
 
