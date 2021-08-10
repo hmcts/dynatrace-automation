@@ -1,4 +1,4 @@
-env                              = "nonprod"
+env                              = "stg"
 dynatrace_environment_id         = "yrk32651"
 devops_key_vault                 = "infra-vault-nonprod"
 devops_key_vault_rg              = "cnp-core-infra"
@@ -2089,9 +2089,6 @@ management_zones = [
               operator = "CONTAINS"
               value = "ecm"
             }
-          },
-          {
-
           }
         ]
       },
@@ -2206,7 +2203,1184 @@ management_zones = [
         ]
       }
     ]
-  }
+  },
+  {
+    name = "CFT - ECM - Perf"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ethos"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "ecm"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "CFT CCD Perf"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "CFT XUI"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "ethos"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - ECM - Staging"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_SERVICE",
+          "PROCESS_GROUP_TO_HOST"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "ethos"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "ecm"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "CFT CCD"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "CFT XUI"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "ethos"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Elasticsearch - Perf"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "ccd-data"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Elasticsearch - Staging"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = [
+          "PROCESS_GROUP_TO_HOST",
+          "PROCESS_GROUP_TO_SERVICE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "ccd-data"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Evidence Management - Perf"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "em"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "em "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "dg"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "dm "
+              }
+            }
+          },
+          {
+            type = "SERVICE"
+            enabled = true
+            propagation_types = [
+              "SERVICE_TO_HOST_LIKE",
+              "SERVICE_TO_PROCESS_GROUP_LIKE"
+            ]
+            conditions = [
+              {
+                key = {
+                  type = "STATIC"
+                  attribute = "SERVICE_TAGS"
+                },
+                tag = {
+                  negate = false
+                  operator = "EQUALS"
+                  value = {
+                    context = "CONTEXTLESS"
+                    key = "NS"
+                    value = "dm-store"
+                  }
+                }
+              },
+              {
+                key = {
+                  type = "STATIC"
+                  attribute = "SERVICE_TAGS"
+                },
+                tag = {
+                  negate = false
+                  operator = "EQUALS"
+                  value = {
+                    context = "CONTEXTLESS"
+                    key = "Environment"
+                    value = "PERF"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Evidence Management - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            }
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "dm "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "em "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "em"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "dg"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "dm-store"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Family Public Law - Perf"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = false
+        propagation_types = [
+          "SERVICE_TO_PROCESS_GROUP_LIKE",
+          "SERVICE_TO_HOST_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "fpl "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = false
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "Family Public Law - Perf"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = false
+        propagation_types = [
+          "PROCESS_GROUP_TO_SERVICE",
+          "PROCESS_GROUP_TO_HOST"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "family-public-law"
+              }
+            }
+          },
+          {
+            type = "SERVICE"
+            enabled = true
+            propagation_types = [
+              "SERVICE_TO_PROCESS_GROUP_LIKE",
+              "SERVICE_TO_HOST_LIKE"
+            ]
+            conditions = [
+              {
+                key = {
+                  type = "STATIC"
+                  attribute = "SERVICE_TAGS"
+                },
+                tag = {
+                  negate = false
+                  operator = "EQUALS"
+                  value = {
+                    context = "CONTEXTLESS"
+                    key = "Environment"
+                    value = "PERF"
+                  }
+                }
+              },
+              {
+                key = {
+                  type = "STATIC"
+                  attribute = "SERVICE_TAGS"
+                },
+                tag = {
+                  negate = false
+                  operator = "EQUALS"
+                  value = {
+                    context = "CONTEXTLESS"
+                    key = "SVCOFF"
+                    value = "SVCOFF0001260"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            type = "SERVICE"
+            enabled = true
+            propagation_types = [
+              "SERVICE_TO_PROCESS_GROUP_LIKE",
+              "SERVICE_TO_HOST_LIKE"
+            ]
+            conditions = [
+              {
+                key = {
+                  type = "STATIC"
+                  attribute = "SERVICE_TYPE"
+                },
+                service_type = {
+                  negate = false
+                  operator = "EQUALS"
+                  value = "DATABASE_SERVICE"
+                }
+              },
+              {
+                key = {
+                  type = "STATIC"
+                  attribute = "SERVICE_TAGS"
+                },
+                tag = {
+                  negate = false
+                  operator = "EQUALS"
+                  value = {
+                    context = "CONTEXTLESS"
+                    key = "SVCOFF"
+                    value = "SVCOFF0001260"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Family Public Law - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = false
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "fpl "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = false
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "family public law"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = false
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "family-public-law"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001260"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = [
+          "SERVICE_TO_HOST_LIKE",
+          "SERVICE_TO_PROCESS_GROUP_LIKE"
+        ]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+                value = "SVCOFF0001260"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
 ]
 
 
