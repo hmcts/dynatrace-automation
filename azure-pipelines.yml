@@ -92,10 +92,10 @@ stages:
 
       variables:
       - name: altEnvironment
-        ${{ if eq(environment['name'], 'stg') }}:
+        ${{ if eq( environment['name'], 'stg') }}:
           value: 'nonprod'
-        ${{ if ne(environment['name'], 'stg') }}:
-          value: ${{ environment.name }}
+        ${{ if ne( environment['name'], 'prod') }}:
+          value: 'prod'
 
       dependsOn: ${{ environment.dependsOn }}
       jobs:
@@ -118,8 +118,8 @@ stages:
             inputs:
               runAsPreJob: false
               ConnectedServiceName: 'dts-management-nonprod-intsvc'
-              keyVaultName: 'infra-vault-{{ variables.altEnvironment }}'
-              secretsFilter: 'dynatrace-{{ variables.altEnvironment }}-api-key'
+              keyVaultName: 'infra-vault-nonprod'
+              secretsFilter: 'dynatrace-nonprod-api-key'
 
           - task: Bash@3
             displayName: 'Set environment variables'
@@ -128,7 +128,7 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: |
                 echo "##vso[task.setvariable variable=NEW_CLI]1"
-                echo "##vso[task.setvariable variable=DYNATRACE_${{ upper(variables.altEnvironment) }}_API_KEY]$(dynatrace-${{ variables.altEnvironment }}-api-key)"
+                echo "##vso[task.setvariable variable=DYNATRACE_${{ upper(parameters.environment) }}_API_KEY]$(dynatrace-${{ parameters.environment }}-api-key)"
 
           - task: Bash@3
             displayName: 'Monaco deploy config'
