@@ -117,7 +117,7 @@ stages:
             displayName: 'Read Dynatrace api token from keyvault'
             inputs:
               runAsPreJob: false
-              ConnectedServiceName: 'dts-management-{{ variables.altEnvironment }}-intsvc'
+              ConnectedServiceName: 'dts-management-nonprod-intsvc'
               keyVaultName: 'infra-vault-{{ variables.altEnvironment }}'
               secretsFilter: 'dynatrace-{{ variables.altEnvironment }}-api-key'
 
@@ -148,6 +148,6 @@ stages:
               overrideAction: ${{ parameters.overrideAction }}
               environment: ${{ environment.name }}
               component: ${{ variables.component }}
-              serviceConnection: "dts-management-{{ variables.altEnvironment  }}-intsvc"
+              serviceConnection: "dts-management-nonprod-intsvc"
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
