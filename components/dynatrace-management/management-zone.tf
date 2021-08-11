@@ -155,7 +155,7 @@ resource "dynatrace_management_zone" "management-zone" {
               value {
                 context = indexed_tag.value.value.context
                 key     = indexed_tag.value.value.key
-                value   = indexed_tag.value.value.value
+                value   = lookup(indexed_tag.value.value, "value", "")
               }
             }
           }
