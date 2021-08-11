@@ -8008,6 +8008,434 @@ management_zones = [
         ]
       }
     ]
+  },
+  {
+    name = "DTS - FACT - AAT"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "AAT_CFT"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            }
+          },
+          {
+            process_metadata = {
+              attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+              dynamic_key = "KUBERNETES_NAMESPACE"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "fact"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "DTS FACT AAT"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "fact"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_HOST_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "fact-aat.postgres.database.azure.com"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "DTS - FACT - Perf"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "PERF_CFT"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            }
+          },
+          {
+            process_metadata = {
+              attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+              dynamic_key = "KUBERNETES_NAMESPACE"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "fact"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "DTS FACT Perf"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "fact"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_HOST_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "fact-perftest.postgres.database.azure.com"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "DTS - HMI - Dev"
+    rules = [
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_name = {
+              negate = false
+              operator = "EQUALS"
+              value = "DTS-SHAREDSERVICES-DEV"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_SUBSCRIPTION_NAME"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "DTS - NFDIV - AAT"
+    rules =  [
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "AAT_CFT"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            }
+          },
+          {
+            process_metadata = {
+              attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+              dynamic_key = "KUBERNETES_NAMESPACE"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "nfdiv"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "CFT No Fault"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "DTS - NFDIV - PERF"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "PERF_CFT"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            }
+          },
+          {
+            process_metadata = {
+              attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+              dynamic_key = "KUBERNETES_NAMESPACE"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "nfdiv"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "SVCOFF"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+              }
+            }
+          },
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "HOST"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "CUSTOM_DEVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "CUSTOM_DEVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        conditions = [
+          {
+            indexed_tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "SVCOFF"
+              }
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
 
