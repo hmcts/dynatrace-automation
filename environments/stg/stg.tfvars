@@ -6830,6 +6830,1184 @@ management_zones = [
         ]
       }
     ]
+  },
+  {
+    name = "CFT - Staging"
+    rules= [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "KUBERNETES_CLUSTER"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cft-aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_name = {
+              negate = false
+              operator = "CONTAINS"
+              value = "DCD-CFTAPPS-STG"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_ENTITY_NAME"
+            }
+          }
+        ]
+      },
+      {
+        type = "CLOUD_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "cft-aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "CLOUD_APPLICATION_NAMESPACE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cft-aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cft-aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "HOST"
+        enabled = true
+        propagation_types = ["HOST_TO_PROCESS_GROUP_INSTANCE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "KUBERNETES_CLUSTER_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cft-aat"
+            }
+          }
+        ]
+      },
+      {
+        type = "CUSTOM_DEVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "CUSTOM_DEVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Palo Alto - AAT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Azure Entities"
+                value = "CFT AAT"
+              }
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - Work Allocation"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_PROCESS_GROUP_LIKE","SERVICE_TO_HOST_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Work Allocation"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - XUI - Perf"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "xui"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "xui "
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "CFT - XUI - Staging"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "CFT Database"
+                value = "xui "
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "xui"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "xui"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        propagation_types = ["SERVICE_TO_HOST_LIKE","SERVICE_TO_PROCESS_GROUP_LIKE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "NS"
+                value = "xui"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "Crime"
+    rules = [
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "crime"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_SERVICE","PROCESS_GROUP_TO_HOST"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CRIME"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "TAG_KEY_EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Crime-PRX"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Crime-CPP"
+                value = "PRX"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_name = {
+              negate = false
+              operator = "CONTAINS"
+              value = "Strategic Platform - non-live"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_SUBSCRIPTION_NAME"
+            }
+          }
+        ]
+      },
+      {
+        type = "CUSTOM_DEVICE_GROUP"
+        enabled = true
+        propagation_types = ["CUSTOM_DEVICE_GROUP_TO_CUSTOM_DEVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "CUSTOM_DEVICE_GROUP_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "azure"
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Azure Entities"
+                value = "Crime CP Non-live"
+              }
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "Crime - CP (NFT)"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Application"
+                value = "CP"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CRIME"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "NFT"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_name = {
+              negate = false
+              operator = "CONTAINS"
+              value = "Strategic Platform - non-live"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_SUBSCRIPTION_NAME"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "EQUALS"
+              value = "Crime CPP NFT"
+            }
+          }
+        ]
+      },
+      {
+        type = "CUSTOM_DEVICE_GROUP"
+        enabled = true
+        propagation_types = ["CUSTOM_DEVICE_GROUP_TO_CUSTOM_DEVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "CUSTOM_DEVICE_GROUP_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "azure"
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Azure Entities"
+                value = "Crime CP Non-live"
+              }
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "Crime - IdAM - NFT"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "NFT_CRIME_ID"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "Crime - ROTA (NFT)"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_SERVICE","PROCESS_GROUP_TO_HOST"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            }
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "NFT_CRIME_RT"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "EQUALS"
+              value = "Crime ROTA NFT"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "Crime CP (MDV)"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_SERVICE","PROCESS_GROUP_TO_HOST"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CRIME"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "MDV"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            }
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Application"
+                value = "CP"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_name = {
+              negate = false
+              operator = "EQUALS"
+              value = "Strategic Platform - non-live"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_SUBSCRIPTION_NAME"
+            }
+          }
+        ]
+      },
+      {
+        type = "CUSTOM_DEVICE_GROUP"
+        enabled = true
+        propagation_types = ["CUSTOM_DEVICE_GROUP_TO_CUSTOM_DEVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "CUSTOM_DEVICE_GROUP_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "BEGINS_WITH"
+              value = "azure"
+            }
+          }
+        ]
+      },
+      {
+        type = "AZURE"
+        enabled = true
+        propagation_types = ["AZURE_TO_PG","AZURE_TO_SERVICE"]
+        conditions = [
+          {
+            indexed_tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Azure Entities"
+                value = "Crime CP Non-live"
+              }
+            },
+            key = {
+              type = "STATIC"
+              attribute = "AZURE_ENTITY_TAGS"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "DTS - CVP - Perf"
+    rules = [
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_SERVICE","PROCESS_GROUP_TO_HOST"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "CFT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Application"
+                value = "CVP"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "PERF"
+              }
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cvp"
+            }
+          }
+        ]
+      },
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            }
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cvp"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name = "DTS - CVP - Staging"
+    rules = [
+      {
+        type = "WEB_APPLICATION"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "WEB_APPLICATION_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cvp"
+            }
+          }
+        ]
+      },
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_TYPE"
+            },
+            service_type = {
+              negate = false
+              operator = "EQUALS"
+              value = "DATABASE_SERVICE"
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "SERVICE_DATABASE_NAME"
+            },
+            string = {
+              case_sensitive = false
+              negate = false
+              operator = "CONTAINS"
+              value = "cvp"
+            }
+          }
+        ]
+      },
+      {
+        type = "PROCESS_GROUP"
+        enabled = true
+        propagation_types = ["PROCESS_GROUP_TO_HOST","PROCESS_GROUP_TO_SERVICE"]
+        conditions = [
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Environment"
+                value = "AAT"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Department"
+                value = "DTS"
+              }
+            }
+          },
+          {
+            key = {
+              type = "STATIC"
+              attribute = "PROCESS_GROUP_TAGS"
+            },
+            tag = {
+              negate = false
+              operator = "EQUALS"
+              value = {
+                context = "CONTEXTLESS"
+                key = "Application"
+                value = "CVP"
+              }
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
 
