@@ -595,19 +595,19 @@ resource "dynatrace_management_zone" "management-zone" {
             iterator = synthetic_engine
             for_each = { for k, v in conditions.value : k => v if k == "synthetic_engine" }
             content {
-              negate         = synthetic_engine.value.negate
-              operator       = synthetic_engine.value.operator
-              value          = synthetic_engine.value.value
+              negate   = synthetic_engine.value.negate
+              operator = synthetic_engine.value.operator
+              value    = synthetic_engine.value.value
             }
           }
           dynamic "synthetic_engine_type_comparison" {
             iterator = synthetic_engine_type_comparison
             for_each = { for k, v in conditions.value : k => v if k == "synthetic_engine_type_comparison" }
             content {
-              negate         = synthetic_engine_type_comparison.value.negate
-              operator       = synthetic_engine_type_comparison.value.operator
-              type       = synthetic_engine_type_comparison.value.type
-              value          = synthetic_engine_type_comparison.value.value
+              negate   = synthetic_engine_type_comparison.value.negate
+              operator = synthetic_engine_type_comparison.value.operator
+              type     = synthetic_engine_type_comparison.value.type
+              value    = synthetic_engine_type_comparison.value.value
             }
           }
           dynamic "tag" {
@@ -629,7 +629,7 @@ resource "dynatrace_management_zone" "management-zone" {
             content {
               negate   = tag_comparison.value.negate
               operator = tag_comparison.value.operator
-              type = tag_comparison.value.type
+              type     = tag_comparison.value.type
               value {
                 context = tag_comparison.value.value.context
                 key     = tag_comparison.value.value.key
