@@ -32,7 +32,6 @@ appeal-benefit-decision:
     enabled: "false"
     description: "Appeal Benefit Decision (SSCS) - Availability"
     url: "https://www.appeal-benefit-decision.service.gov.uk/language-preference"
-    managementZoneId: ""
     skipDeployment: "false"
 
 ccd-case-management-web-prod-health:
@@ -40,7 +39,6 @@ ccd-case-management-web-prod-health:
   enabled: "false"
   description: "ccd-case-management-web Prod Health"
   url: "https://www.ccd.platform.hmcts.net/health"
-  managementZoneId: ""
   skipDeployment: "false"
 
 cvp-availability:
@@ -48,7 +46,6 @@ cvp-availability:
     enabled: "false"
     description: "CVP - Availability"
     url: "https://join.meet.video.justice.gov.uk/HMCTS/#/?conference=test_call"
-    managementZoneId: ""
     skipDeployment: "false"
 
 cvp-availability-admin-login:
@@ -56,7 +53,6 @@ cvp-availability-admin-login:
     enabled: "false"
     description: "CVP - Availability (Admin Login URL)"
     url: "https://meet.video.justice.gov.uk/accounts/login/?next=/cloudroom/"
-    managementZoneId: ""
     skipDeployment: "false"
 
 cvp-test-call-availability:
@@ -64,7 +60,6 @@ cvp-test-call-availability:
     enabled: "false"
     description: "CVP_Test_Call_Availability"
     url: "https://join.meet.video.justice.gov.uk/HMCTS/#/?conference=test_call"
-    managementZoneId: ""
     skipDeployment: "false"
 
 divorce-apply-availability:
@@ -72,7 +67,6 @@ divorce-apply-availability:
     enabled: "false"
     description: "Divorce (Apply) - Availability"
     url: "https://www.apply-divorce.service.gov.uk/"
-    managementZoneId: ""
     skipDeployment: "false"
 
 divorce-da-availability:
@@ -80,7 +74,6 @@ divorce-da-availability:
     enabled: "false"
     description: "Divorce (DA) - Availability"
     url: "http://www.decree-absolute.apply-divorce.service.gov.uk"
-    managementZoneId: ""
     skipDeployment: "false"
 
 divorce-dn-availability:
@@ -88,7 +81,6 @@ divorce-dn-availability:
     enabled: "false"
     description: "Divorce (DN) - Availability"
     url: "http://www.decree-nisi.apply-divorce.service.gov.uk"
-    managementZoneId: ""
     skipDeployment: "false"
 
 divorce-rfe-availability:
@@ -96,7 +88,6 @@ divorce-rfe-availability:
     enabled: "false"
     description: "Divorce (RFE) - Availability"
     url: "http://www.respond-divorce.service.gov.uk"
-    managementZoneId: ""
     skipDeployment: "false"
 
 employment-tribunal-availability:
@@ -104,7 +95,6 @@ employment-tribunal-availability:
     enabled: "false"
     description: "Employment Tribunal - Availability"
     url: "https://employmenttribunals.service.gov.uk/en/apply/application-number"
-    managementZoneId: ""
     skipDeployment: "false"
 
 exui-manage-my-case-availability:
@@ -112,7 +102,6 @@ exui-manage-my-case-availability:
     enabled: "false"
     description: "EXUI Manage My Case - Availability"
     url: "https://manage-case.platform.hmcts.net/"
-    managementZoneId: ""
     skipDeployment: "false"
 
 exui-manage-my-organisation-availability:
@@ -120,7 +109,6 @@ exui-manage-my-organisation-availability:
     enabled: "false"
     description: "EXUI Manage My Organisation - Availability"
     url: "http://Manage-org.platform.HMCTS.net"
-    managementZoneId: ""
     skipDeployment: "false"
 
 fact-availability:
@@ -128,7 +116,6 @@ fact-availability:
     enabled: "false"
     description: "FaCT - Availability"
     url: "https://www.find-court-tribunal.service.gov.uk/"
-    managementZoneId: ""
     skipDeployment: "false"
 
 ocmc-cookie-banner-availability:
@@ -136,7 +123,6 @@ ocmc-cookie-banner-availability:
     enabled: "false"
     description: "OCMC - Cookie Banner Synthetic - Availability"
     url: "https://www.moneyclaims.service.gov.uk/cookies"
-    managementZoneId: ""
     skipDeployment: "false"
 
 ocmc-money-claims-availability:
@@ -144,7 +130,6 @@ ocmc-money-claims-availability:
     enabled: "false"
     description: "OCMC Money Claims - Availability"
     url: "https://www.moneyclaims.service.gov.uk"
-    managementZoneId: ""
     skipDeployment: "false"
 
 probate-availability:
@@ -152,7 +137,6 @@ probate-availability:
     enabled: "false"
     description: "Probate - Availability"
     url: "https://www.apply-for-probate.service.gov.uk/death-certificate"
-    managementZoneId: ""
     skipDeployment: "false"
 
 scheduing-and-listing-prod-availability:
@@ -160,7 +144,6 @@ scheduing-and-listing-prod-availability:
     enabled: "false"
     description: "Scheduling and Listings PROD - Availability"
     url: "https://list-assist.service.justice.gov.uk/"
-    managementZoneId: ""
     skipDeployment: "false"
 
 stop-probate-application-public:
@@ -168,7 +151,6 @@ stop-probate-application-public:
     enabled: "false"
     description: "Stop Probate Application (Public)"
     url: "https://www.apply-for-probate.service.gov.uk/caveats/health"
-    managementZoneId: ""
     skipDeployment: "false"
 
 
@@ -180,7 +162,6 @@ feesandpay-manage-payments-frontend:
   enabled: "false"
   description: "feesandpay manage payments frontend"
   url: "https://manage-payments.platform.hmcts.net/health"
-  managementZoneId: ""
   skipDeployment: "true"
 
 feesandpay-fees-register-frontend:
@@ -188,7 +169,6 @@ feesandpay-fees-register-frontend:
   enabled: "false"
   description: "feesandpay fees register frontend"
   url: "https://www.fees-register.platform.hmcts.net/health"
-  managementZoneId: ""
   skipDeployment: "true"
 
 feesandpay-paybubble-frontend:
@@ -196,7 +176,6 @@ feesandpay-paybubble-frontend:
   enabled: "false"
   description: "feesandpay paybubble frontend"
   url: "https://paybubble.platform.hmcts.net/health"
-  managementZoneId: ""
   skipDeployment: "true"
 
 helpwithfees-frontend:
@@ -204,7 +183,6 @@ helpwithfees-frontend:
   enabled: "false"
   description: "helpwithfees frontend"
   url: "https://helpwithcourtfees.service.gov.uk/"
-  managementZoneId: ""
   skipDeployment: "true"
 
 legal-cmc-frontend:
@@ -212,7 +190,6 @@ legal-cmc-frontend:
   enabled: "false"
   description: "moneyclaims legal frontend"
   url: "https://www.moneyclaim-legal.platform.hmcts.net/health"
-  managementZoneId: ""
   skipDeployment: "true"
 
 sscs-submit-your-appeal-frontend:
@@ -220,7 +197,6 @@ sscs-submit-your-appeal-frontend:
   enabled: "false"
   description: "sscssya frontend"
   url: "https://www.appeal-benefit-decision.service.gov.uk/health"
-  managementZoneId: ""
   skipDeployment: "true"
 
 sscs-track-your-appeal-frontend:
@@ -228,7 +204,6 @@ sscs-track-your-appeal-frontend:
   enabled: "false"
   description: "sscstya frontend"
   url: "https://www.track-benefit-appeal.service.gov.uk/"
-  managementZoneId: ""
   skipDeployment: "true"
 
 sscs-manage-your-appeal-frontend:
@@ -236,7 +211,6 @@ sscs-manage-your-appeal-frontend:
   enabled: "false"
   description: "sscsmya frontend"
   url: "https://www.manage.appeal-benefit-decision.service.gov.uk/health"
-  managementZoneId: ""
   skipDeployment: "true"
 
 
