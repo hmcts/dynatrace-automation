@@ -37,9 +37,13 @@ Current automation uses a combination of Terraform and [Monaco](https://dynatrac
     │   │   └── xxx.tf                        # Terraform resource files
     ├── config  
     │   └── dynatrace-environments.yaml       # Monaco environments file 
-    │   └── ***.json                          # Monaco json template files
+    │   └── xxx.json                          # Monaco json template files
     ├── environments
-    │   └── stg                                    
+    │   └── stg      
+    │   │   └── synthetic-monitor 
+    │   │   │   └── xxx.yaml                  # Monaco synthetic monitor config values files
+    │   │   └── synthetic-location 
+    │   │   │   └── xxx.yaml                  # Monaco synthetic location config values files
     │   │   └── stg.tfvars                    # Environment-specific Terraform config values file
     │   └── prod                                   
     ├── pipeline-scripts  
