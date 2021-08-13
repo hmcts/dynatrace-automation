@@ -29,6 +29,30 @@ Current automation uses a combination of Terraform and [Monaco](https://dynatrac
 
 ## Making changes
 
+### Repository folder structure
+
+    ├── components
+    │   └── dynatrace-management
+    │   │   └── .terraform-version            # terraform version (read by tfenv)
+    │   │   └── xxx.tf                        # Terraform resource files
+    ├── config  
+    │   └── dynatrace-environments.yaml       # Monaco environments file 
+    │   └── xxx.json                          # Monaco json template files
+    ├── environments
+    │   └── stg      
+    │   │   └── synthetic-monitor 
+    │   │   │   └── xxx.yaml                  # Monaco synthetic monitor config values files
+    │   │   └── synthetic-location 
+    │   │   │   └── xxx.yaml                  # Monaco synthetic location config values files
+    │   │   └── stg.tfvars                    # Environment-specific Terraform config values file
+    │   └── prod                                   
+    ├── pipeline-scripts  
+    ├── azure_pipeline.yaml
+
+### Environment tfvars file
+This contains Terraform configuration values.  
+Due to the large number of nested objects, you may find it easier to use the 'code folding' feature of your IDE ([Intellij Idea example](https://www.jetbrains.com/help/rider/Code_Folding.html#specifying_prefs)) to help navigate and locate specific objects when making changes to the file
+
 ### Synthetic monitors
 There is a master json template each for [public](https://github.com/hmcts/dynatrace-automation/blob/master/config/synthetic-monitor-public.json) and [private](https://github.com/hmcts/dynatrace-automation/blob/master/config/synthetic-monitor-private.json) synthetic monitors.
    
@@ -55,7 +79,7 @@ new-config-name:
 
 ### Maintenance Window
 * Locate the environment [tfvars file](https://github.com/hmcts/dynatrace-automation/blob/master/environments/stg/stg.tfvars)
-* Add a block entry in the maintenance window list as below
+* Add a block entry (or edit an existing entry) in the maintenance window list as below
 ```terraform
 maintenance_windows = [
   {
@@ -74,6 +98,51 @@ maintenance_windows = [
   }
 ]
 ```
-* > **Note**: After a configured maintenance window scheduled has elapsed, raise a PR to remove the maintenance window entry from code.  Maintenance window will be removed from Dynatrace on PR merge
+* > **Note**: After a configured maintenance window scheduled has elapsed, raise a Pull Request to remove the maintenance window entry from code.  Maintenance window will be removed from Dynatrace on PR merge
 * Refer to the [Terraform provider documentation](https://registry.terraform.io/providers/dynatrace-oss/dynatrace/latest/docs/resources/maintenance_window) for further information on config values
 * Further information can also be found on the [APM maintenance window page](https://tools.hmcts.net/confluence/display/APM/Maintenance+Windows)
+
+### Management Zone
+* Locate the environment [tfvars file](https://github.com/hmcts/dynatrace-automation/blob/master/environments/stg/stg.tfvars)
+* Add a block entry (or edit an existing entry) in the management zone list as below
+```terraform
+management_zone = [
+  {
+    name = "DTS - NFDIV - PERF"
+    rules = [
+      {
+        type = "SERVICE"
+        enabled = true
+        conditions = [
+          {
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "EQUALS"
+              value = "PERF_CFT"
+            },
+            key = {
+              type = "STATIC"
+              attribute = "HOST_GROUP_NAME"
+            }
+          },
+          {
+            process_metadata = {
+              attribute = "PROCESS_GROUP_PREDEFINED_METADATA"
+              dynamic_key = "KUBERNETES_NAMESPACE"
+            },
+            string = {
+              case_sensitive = true
+              negate = false
+              operator = "CONTAINS"
+              value = "nfdiv"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+* Refer to the [Terraform provider documentation](https://registry.terraform.io/providers/dynatrace-oss/dynatrace/latest/docs/resources/maintenance_window) for further information on config values
+* Further information can also be found on the [APM management zone page](https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=1496582176#APMWaysofWorking-ManagementZones)

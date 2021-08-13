@@ -12,9 +12,9 @@ maintenance_windows = [
     suppress-synth_mon_exec = "true"
     suppression             = "DONT_DETECT_PROBLEMS"
     schedule = {
-      end             = "2021-10-27 23:00"
+      end             = "2021-05-27 23:00"
       recurrence_type = "ONCE"
-      start           = "2021-10-27 22:00"
+      start           = "2021-05-27 22:00"
       zone_id         = "Europe/London"
     }
     scope = {
@@ -43,9 +43,9 @@ maintenance_windows = [
     suppress-synth_mon_exec = "false"
     suppression             = "DETECT_PROBLEMS_DONT_ALERT"
     schedule = {
-      end             = "2021-09-27 23:00"
+      end             = "2021-06-27 23:00"
       recurrence_type = "ONCE"
-      start           = "2021-09-27 22:00"
+      start           = "2021-06-27 22:00"
       zone_id         = "Europe/London"
     }
     scope = {
@@ -72,9 +72,9 @@ maintenance_windows = [
     suppress-synth_mon_exec = "false"
     suppression             = "DONT_DETECT_PROBLEMS"
     schedule = {
-      end             = "2021-05-27 23:00"
+      end             = "2021-04-27 23:00"
       recurrence_type = "ONCE"
-      start           = "2021-05-27 22:00"
+      start           = "2021-04-27 22:00"
       zone_id         = "Europe/London"
     }
     scope = {}
