@@ -1,6 +1,9 @@
 # Dynatrace-Automation
 Automation for dynatrace components such synthetic monitoring, dashboards, maintenance windows
 
+## Automation pipeline
+Located in [Azure DevOps pipelines](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=495&_a=summary)
+
 ## Supported Features
 The following features are currently supported by automation:
 * Management zone
@@ -71,5 +74,6 @@ maintenance_windows = [
   }
 ]
 ```
+* > **Note**: After a configured maintenance window scheduled has elapsed, raise a PR to remove the maintenance window entry from code.  Maintenance window will be removed from Dynatrace on PR merge
 * Refer to the [Terraform provider documentation](https://registry.terraform.io/providers/dynatrace-oss/dynatrace/latest/docs/resources/maintenance_window) for further information on config values
 * Further information can also be found on the [APM maintenance window page](https://tools.hmcts.net/confluence/display/APM/Maintenance+Windows)
