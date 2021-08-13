@@ -51,9 +51,7 @@
   "GEOLOCATION-F15152A6A059C277",
   "GEOLOCATION-3484C4AEE903624D"
  ],
- "managementZones": [
-  "{{.managementZoneId}}"
- ],
+ "managementZones": [],
  "manuallyAssignedApps": [],
 
  "tags": []

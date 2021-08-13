@@ -50,9 +50,7 @@
  "locations": [
   "SYNTHETIC_LOCATION-CC3E4D2657A13D18"
  ],
- "managementZones": [
-  "{{.managementZoneId}}"
- ],
+ "managementZones": [],
  "manuallyAssignedApps": [],
 
  "tags": []

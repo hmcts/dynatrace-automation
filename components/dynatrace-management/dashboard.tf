@@ -155,10 +155,6 @@ resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
     }
     filter {
       timeframe = "-1h"
-      management_zone {
-        name = "CFT"
-        id   = "-1016681994524158509"
-      }
     }
     filter_config {
       type         = "MIXED"
@@ -196,10 +192,6 @@ resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
     }
     filter {
       timeframe = "-1h"
-      management_zone {
-        name = "CFT"
-        id   = "-1016681994524158509"
-      }
     }
     filter_config {
       type         = "MIXED"
@@ -431,10 +423,6 @@ resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
     }
     filter {
       timeframe = "-6h"
-      management_zone {
-        name = "CFT"
-        id   = "-1016681994524158509"
-      }
     }
   }
   tile {
