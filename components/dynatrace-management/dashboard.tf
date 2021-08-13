@@ -155,7 +155,6 @@ resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
     }
     filter {
       timeframe = "-1h"
-      management_zone {}
     }
     filter_config {
       type         = "MIXED"
@@ -193,7 +192,6 @@ resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
     }
     filter {
       timeframe = "-1h"
-      management_zone {}
     }
     filter_config {
       type         = "MIXED"
@@ -425,7 +423,6 @@ resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
     }
     filter {
       timeframe = "-6h"
-      management_zone {}
     }
   }
   tile {
