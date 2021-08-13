@@ -36,7 +36,6 @@ config:
 - apply-for-probate: "../../../config/synthetic-monitor-private.json"
   bulk-print-private: "../../../config/synthetic-monitor-private.json"
   new-config-name: "../../../config/synthetic-monitor-private.json"
-
 ```
 * Below the config section, add an entry for the new monitor and provide the config values
 ```yaml
@@ -50,3 +49,27 @@ new-config-name:
 * **Note:** Locations are hardcoded into the json template based on the [Synthetic Monitoring Strategy](https://tools.hmcts.net/confluence/display/APM/Synthetic+Monitoring+Strategy)
   * Public: London and Cardiff Azure
   * Private: Birmingham CTSC
+
+### Maintenance Window
+* Locate the environment [tfvars file](https://github.com/hmcts/dynatrace-automation/blob/master/environments/stg/stg.tfvars)
+* Add a block entry in the maintenance window list as below
+```terraform
+maintenance_windows = [
+  {
+    name                    = "Example-OOH-Retrospective-Maintenance - empty scope"
+    description             = "Test retrospective maintenance based on a previous P1 example \n with empty scope i.e. all environment"
+    type                    = "UNPLANNED"
+    suppress-synth_mon_exec = "false"
+    suppression             = "DONT_DETECT_PROBLEMS"
+    schedule = {
+      end             = "2021-05-27 23:00"
+      recurrence_type = "ONCE"
+      start           = "2021-05-27 22:00"
+      zone_id         = "Europe/London"
+    }
+    scope = {}
+  }
+]
+```
+* Refer to the [Terraform provider documentation](https://registry.terraform.io/providers/dynatrace-oss/dynatrace/latest/docs/resources/maintenance_window) for further information on config values
+* Further information can also be found on the [APM maintenance window page](https://tools.hmcts.net/confluence/display/APM/Maintenance+Windows)
