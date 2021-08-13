@@ -17,10 +17,10 @@ Current automation uses a combination of Terraform and [Monaco](https://dynatrac
    
 |Setting|Terraform|Monaco|
 |-------|---------|------|
-|Synthetic monitor|  |:heavy_check_mark:|
-|Synthetic location|  |:heavy_check_mark:|
-|Maintenance Zone|:heavy_check_mark:| |
-|Maintenance Window|:heavy_check_mark:| |
-|Dashboard|:heavy_check_mark:| |
+|Synthetic monitor|  |:white_check_mark:|
+|Synthetic location|  |:white_check_mark:|
+|Maintenance Zone|:white_check_mark:| |
+|Maintenance Window|:white_check_mark:| |
+|Dashboard|:white_check_mark:| |
 
 ## Usage
