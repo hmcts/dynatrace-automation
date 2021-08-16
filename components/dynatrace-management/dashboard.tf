@@ -1,764 +1,133 @@
-resource "dynatrace_dashboard" "On-call_Dashboard_Demo" {
+resource "dynatrace_dashboard" "dashboard" {
+  for_each = { for dashboard in var.dashboards : dashboard.name => dashboard }
+
   dashboard_metadata {
-    name   = "Platform Ops Oncall Dashboard"
-    owner  = "chris.orisawayi@hmcts.net"
-    shared = true
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### CCD Case Management\n\n\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 0
-      top    = 722
-      width  = 304
+    name              = each.value.name
+    owner             = lookup(each.value, "owner", null)
+    shared            = lookup(each.value, "shared", null)
+    tags              = lookup(each.value, "tags", null)
+    unknowns          = lookup(each.value, "unknowns", null)
+    valid_filter_keys = lookup(each.value, "valid_filter_keys", null)
+    dynamic "dynamic_filters" {
+      iterator = dynamic_filters
+      for_each = lookup(each.value, "dynamic_filters", [])
+      content {
+        filters              = dynamic_filters.value.filters
+        tag_suggestion_types = lookup(dynamic_filters.value, "tag_suggestion_types", [])
+      }
     }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-77E3F438670CBB8C"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 760
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "###IDAM \n\n\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 304
-      top    = 722
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-259E11691F39FF07"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 304
-      top    = 760
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Appeal Benefit Decision (SSCS)\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 608
-      top    = 722
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-8145F12E5FA9E7F8"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 608
-      top    = 760
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Custom chart"
-    configured = true
-    tile_type  = "CUSTOM_CHARTING"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 380
-      width  = 304
-    }
-    filter {
-      timeframe = "-1h"
-    }
-    filter_config {
-      type         = "MIXED"
-      custom_name  = "Availability rate [HTTP monitor]"
-      default_name = "Custom chart"
-      chart_config {
-        type   = "TOP_LIST"
-        legend = true
-        series {
-          type             = "LINE"
-          aggregation      = "AVG"
-          aggregation_rate = "TOTAL"
-          entity_type      = "SYNTHETIC_HTTPCHECK"
-          metric           = "builtin:synthetic.http.availability.location.total"
-          sort_ascending   = false
-          sort_column      = true
-          dimension {
-            name             = "dt.entity.http_check"
-            entity_dimension = true
-            id               = "0"
+    dynamic "filter" {
+      iterator = filter
+      for_each = lookup(each.value, "filter", [])
+      content {
+        timeframe = lookup(filter.value, "timeframe", null)
+        dynamic "management_zone" {
+          iterator = management_zone
+          for_each = lookup(filter.value, "management_zone", [])
+          content {
+            id          = management_zone.value.id
+            description = lookup(management_zone.value, "description", null)
+            name        = lookup(management_zone.value, "name", null)
           }
         }
       }
     }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "## CFT Availability\n\t\nAvailability for monitored CFT services\n\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 76
-      left   = 0
-      top    = 0
-      width  = 1520
-    }
-    filter {
-      timeframe = "Last 2 hours"
-    }
-  }
-  tile {
-    name          = "Synthetic monitor health"
-    chart_visible = true
-    configured    = true
-    tile_type     = "SYNTHETIC_TESTS"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 76
-      width  = 1520
-    }
-    filter {
-      timeframe = "-30m"
-    }
-  }
-  tile {
-    name       = ""
-    configured = true
-    tile_type  = "CUSTOM_CHARTING"
-    bounds {
-      height = 304
-      left   = 304
-      top    = 380
-      width  = 418
-    }
-    filter {
-      timeframe = "-1h"
-    }
-    filter_config {
-      type         = "MIXED"
-      custom_name  = "Number of HTTP 5xx errors"
-      default_name = "Custom chart"
-      chart_config {
-        type   = "TIMESERIES"
-        legend = true
-        series {
-          type             = "BAR"
-          aggregation      = "NONE"
-          aggregation_rate = "SECOND"
-          entity_type      = "SERVICE"
-          metric           = "builtin:service.errors.fivexx.count"
-          sort_ascending   = false
-          sort_column      = true
-          dimension {
-            name             = "dt.entity.service"
-            entity_dimension = true
-            id               = "0"
-          }
-        }
+    dynamic "sharing_details" {
+      iterator = sharing_details
+      for_each = lookup(each.value, "sharing_details", [])
+      content {
+        link_shared = lookup(sharing_details.value, "link_shared", false)
+        published   = lookup(sharing_details.value, "published", false)
       }
     }
   }
-  tile {
-    name       = ""
-    configured = true
-    tile_type  = "CUSTOM_CHARTING"
-    bounds {
-      height = 304
-      left   = 722
-      top    = 380
-      width  = 380
-    }
-    filter {
-      timeframe = "-1h"
-    }
-    filter_config {
-      type         = "MIXED"
-      custom_name  = "Number of HTTP 4xx errors"
-      default_name = "Custom chart"
-      chart_config {
-        type   = "TIMESERIES"
-        legend = true
-        series {
-          type             = "BAR"
-          aggregation      = "NONE"
-          aggregation_rate = "SECOND"
-          entity_type      = "SERVICE"
-          metric           = "builtin:service.errors.fourxx.count"
-          sort_ascending   = false
-          sort_column      = true
-          dimension {
-            name             = "dt.entity.service"
-            entity_dimension = true
-            id               = "0"
+
+  dynamic "tile" {
+    iterator = tile
+    for_each = each.value.tiles
+    content {
+      name                        = lookup(tile.value, "name", null)
+      chart_visible               = lookup(tile.value, "chart_visible", true)
+      assigned_entities           = lookup(tile.value, "assigned_entities", null)
+      configured                  = lookup(tile.value, "configured", null)
+      custom_name                 = lookup(tile.value, "custom_name", null)
+      exclude_maintenance_windows = lookup(tile.value, "exclude_maintenance_windows", null)
+      markdown                    = lookup(tile.value, "markdown", null)
+      limit                       = lookup(tile.value, "limit", null)
+      metric                      = lookup(tile.value, "metric", null)
+      query                       = lookup(tile.value, "query", null)
+      time_frame_shift            = lookup(tile.value, "time_frame_shift", null)
+      type                        = lookup(tile.value, "type", "")
+      tile_type                   = lookup(tile.value, "tile_type", null)
+      unknowns                    = lookup(tile.value, "unknowns", null)
+      visualization               = lookup(tile.value, "visualization", null)
+      dynamic "bounds" {
+        iterator = bounds
+        for_each = lookup(tile.value, "bounds", [])
+        content {
+          height = bounds.value.height
+          left   = bounds.value.left
+          top    = bounds.value.top
+          width  = bounds.value.width
+        }
+      }
+      visualization_config {}
+      dynamic "filter" {
+        iterator = filter
+        for_each = lookup(tile.value, "filter", [])
+        content {
+          timeframe = lookup(filter.value, "timeframe", null)
+          dynamic "management_zone" {
+            iterator = management_zone
+            for_each = lookup(filter.value, "management_zone", [])
+            content {
+              id          = lookup(management_zone.value, "id", null)
+              description = lookup(management_zone.value, "description", null)
+              name        = lookup(management_zone.value, "name", null)
+            }
           }
         }
       }
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-F0B7C9875F71D641"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 912
-      top    = 760
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Apply for Probate\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 912
-      top    = 722
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-75D2124FEFFE7F02"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 1216
-      top    = 760
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Bulk Print - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 1216
-      top    = 722
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Bulk Scan (orchestrator) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 0
-      top    = 1102
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-271DB52DAFA31C3A"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 1140
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Bulk Scan (payment-processor) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 304
-      top    = 1102
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-D8891F77F743DC94"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 304
-      top    = 1140
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-EE04B3A62997806B"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 608
-      top    = 1140
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Bulk Scan (processor) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 608
-      top    = 1102
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-14107C2B70F7405A"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 912
-      top    = 1140
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Bulk Scan (reform-scan-notification-service) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 912
-      top    = 1102
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-830532CC9D2DCF38"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 1216
-      top    = 1140
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### CCD Platform (Private)\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 1216
-      top    = 1102
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-DCB5E0A46A90EDCF"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 1520
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### ccd-api-gateway-web Prod Health\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 0
-      top    = 1482
-      width  = 304
-    }
-  }
-  tile {
-    name        = "HTTP 5xx Errors - Count"
-    configured  = true
-    custom_name = "Data explorer results"
-    tile_type   = "DATA_EXPLORER"
-    unknowns    = "{\"queries\":[{\"enabled\":true,\"id\":\"A\",\"metric\":\"builtin:service.errors.fivexx.rate\",\"spaceAggregation\":\"COUNT\",\"timeAggregation\":\"DEFAULT\"}],\"visualConfig\":{\"axes\":{\"xAxis\":{\"visible\":true},\"yAxes\":[]},\"global\":{\"seriesType\":\"LINE\",\"theme\":\"DEFAULT\",\"threshold\":{\"axisTarget\":\"LEFT\",\"columnId\":\"Number of HTTP 5xx errors\",\"rules\":[{\"color\":\"#7dc540\"},{\"color\":\"#f5d30f\"},{\"color\":\"#dc172a\"}]}},\"rules\":[{\"matcher\":\"A:\",\"properties\":{\"color\":\"DEFAULT\",\"seriesType\":\"COLUMN\"}}],\"type\":\"GRAPH_CHART\"}}"
-    bounds {
-      height = 304
-      left   = 1102
-      top    = 380
-      width  = 418
-    }
-    filter {
-      timeframe = "-6h"
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-813F1EF87038E3A8"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 912
-      top    = 1520
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-C316F569F3202D13"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 1216
-      top    = 1520
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-7BCA00F009794800"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 1900
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-9C7C4001CAA63CCB"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 304
-      top    = 1520
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-6C9CD3F575DE727C"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 608
-      top    = 1520
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### CVP - Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 304
-      top    = 1482
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### CVP - Availability (Admin Login URL)\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 608
-      top    = 1482
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### CVP_Test_Call_Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 912
-      top    = 1482
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Divorce (Apply) - Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 1216
-      top    = 1482
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Divorce (DA) - Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 0
-      top    = 1862
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-9FA0B1BE744E11F1"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 304
-      top    = 1900
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Divorce (DN) - Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 304
-      top    = 1862
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-8CEC7147F89D5334"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 608
-      top    = 1900
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Divorce (RFE) - Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 608
-      top    = 1862
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-3B40C9FC89F82AE0"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 912
-      top    = 1900
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-79E9A39242A3CD26"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 304
-      top    = 2280
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-F74D2890A8C306F4"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 608
-      top    = 2280
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-566A07BA5A947163"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 1216
-      top    = 1900
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-BF8F9B3B36811585"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 0
-      top    = 2280
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-136E443E1F560BEE"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 912
-      top    = 2280
-      width  = 304
-    }
-  }
-  tile {
-    name              = "HTTP monitor"
-    assigned_entities = ["HTTP_CHECK-06C0517B2B83FF96"]
-    configured        = true
-    tile_type         = "SYNTHETIC_HTTP_MONITOR"
-    bounds {
-      height = 304
-      left   = 1216
-      top    = 2280
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Evidence Management (em-anno) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 0
-      top    = 2242
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Evidence Management (em-hrs-api) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 304
-      top    = 2242
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Employment Tribunal - Availability\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 912
-      top    = 1862
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Evidence Management (dm-store) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 1216
-      top    = 1862
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Evidence Management (em-icp) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 608
-      top    = 2242
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Evidence Management (em-npa) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 912
-      top    = 2242
-      width  = 304
-    }
-  }
-  tile {
-    name       = "Markdown"
-    configured = true
-    markdown   = "### Evidence Management (em-orchestrator) - Private\n"
-    tile_type  = "MARKDOWN"
-    bounds {
-      height = 38
-      left   = 1216
-      top    = 2242
-      width  = 304
+      dynamic "filter_config" {
+        iterator = filter_config
+        for_each = lookup(tile.value, "filter_config", [])
+        content {
+          type         = lookup(filter_config.value, "type", null)
+          custom_name  = lookup(filter_config.value, "custom_name", null)
+          default_name = lookup(filter_config.value, "default_name", null)
+          dynamic "chart_config" {
+            iterator = chart_config
+            for_each = lookup(filter_config.value, "chart_config", [])
+            content {
+              type   = lookup(chart_config.value, "type", null)
+              legend = lookup(chart_config.value, "legend", null)
+              dynamic "series" {
+                iterator = series
+                for_each = lookup(chart_config.value, "series", [])
+                content {
+                  type             = lookup(series.value, "type", null)
+                  aggregation      = lookup(series.value, "aggregation", null)
+                  aggregation_rate = lookup(series.value, "aggregation_rate", null)
+                  entity_type      = lookup(series.value, "entity_type", null)
+                  metric           = lookup(series.value, "metric", null)
+                  sort_ascending   = lookup(series.value, "sort_ascending", null)
+                  sort_column      = lookup(series.value, "sort_column", null)
+                  dynamic "dimension" {
+                    iterator = dimension
+                    for_each = lookup(series.value, "dimension", [])
+                    content {
+                      name             = lookup(dimension.value, "name", null)
+                      entity_dimension = lookup(dimension.value, "entity_dimension", null)
+                      id               = lookup(dimension.value, "id", null)
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
