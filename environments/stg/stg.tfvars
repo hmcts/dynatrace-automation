@@ -8441,7 +8441,7 @@ management_zones = [
 
 dashboards = [
   {
-    name   = "Platform Ops Oncall2 Dashboard"
+    name   = "Platform Ops Oncall Dashboard"
     owner  = "chris.orisawayi@hmcts.net"
     shared = true
     tiles = [
