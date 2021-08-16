@@ -146,3 +146,48 @@ management_zone = [
 ```
 * Refer to the [Terraform provider documentation](https://registry.terraform.io/providers/dynatrace-oss/dynatrace/latest/docs/resources/maintenance_window) for further information on config values
 * Further information can also be found on the [APM management zone page](https://tools.hmcts.net/confluence/pages/viewpage.action?pageId=1496582176#APMWaysofWorking-ManagementZones)
+
+### Dashboard
+* Locate the environment [tfvars file](https://github.com/hmcts/dynatrace-automation/blob/master/environments/stg/stg.tfvars)
+* Add a block entry (or edit an existing entry) in the dashboard list as below 
+  > Refer to the tfvars file for full details of the deployed Platform Ops Oncall dashboard
+```terraform
+dashboards = [
+  {
+    name   = "Platform Ops Oncall Dashboard"
+    owner  = "dynatraceusername@hmcts.net"
+    shared = true
+    tiles = [
+      {
+        name       = "Markdown"
+        configured = true
+        markdown   = "### CCD Case Management\n\n\n"
+        tile_type  = "MARKDOWN"
+        bounds = [
+          {
+            height = 38
+            left   = 0
+            top    = 722
+            width  = 304
+          }
+        ]
+      },
+      {
+        name              = "HTTP monitor"
+        assigned_entities = ["HTTP_CHECK-77E3F438670CBB8C"]
+        configured        = true
+        tile_type         = "SYNTHETIC_HTTP_MONITOR"
+        bounds = [
+          {
+            height = 304
+            left   = 0
+            top    = 760
+            width  = 304
+          }
+        ]
+      },
+    ]
+  }
+]
+```
+* Refer to the [Terraform provider documentation](https://registry.terraform.io/providers/dynatrace-oss/dynatrace/latest/docs/resources/dashboard) for further information on config values
