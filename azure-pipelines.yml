@@ -119,7 +119,7 @@ stages:
               runAsPreJob: false
               ConnectedServiceName: 'dts-management-${{ variables.altEnvironment }}-intsvc'
               keyVaultName: 'infra-vault-${{ variables.altEnvironment }}'
-              secretsFilter: 'dynatrace-${{ variables.altEnvironment }}-api-key'
+              secretsFilter: 'dynatrace-${{ variables.environment }}-api-key'
 
           - task: Bash@3
             displayName: 'Set environment variables'
@@ -128,7 +128,7 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/$(buildRepoSuffix)'
               script: |
                 echo "##vso[task.setvariable variable=NEW_CLI]1"
-                echo "##vso[task.setvariable variable=DYNATRACE_${{ upper(variables.altEnvironment) }}_API_KEY]$(dynatrace-${{ variables.altEnvironment }}-api-key)"
+                echo "##vso[task.setvariable variable=DYNATRACE_${{ upper(variables.altEnvironment) }}_API_KEY]$(dynatrace-${{ variables.environment }}-api-key)"
                 echo "altEnv is ${{ variables.altEnvironment }}"
 
           - task: Bash@3
