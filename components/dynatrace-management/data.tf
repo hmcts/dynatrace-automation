@@ -6,6 +6,6 @@ data "azurerm_key_vault" "devops_key_vault" {
 
 data "azurerm_key_vault_secret" "dynatrace_api_token" {
   provider     = azurerm.devops-kv
-  name         = "dynatrace-nonprod-api-key"
+  name         = "dynatrace-${var.env}-api-key"
   key_vault_id = data.azurerm_key_vault.devops_key_vault.id
 }
