@@ -27,6 +27,40 @@ Current automation uses a combination of Terraform and [Monaco](https://dynatrac
 |Maintenance Window|:white_check_mark:| |
 |Dashboard|:white_check_mark:| |
 
+<details>
+
+<summary>Supported Features Full List</summary>
+
+|Setting|Terraform|Monaco|
+|:---|:---|:---|
+|Alerting Profile |:white_check_mark: |:white_check_mark:|
+|Anomalies        |:white_check_mark: |:white_check_mark:|
+|App Detection    |                   |:white_check_mark:|
+|Application      |:white_check_mark: |:white_check_mark:|
+|Auto Tag         |:white_check_mark: |:white_check_mark:|
+|Credentials - Azure      |:white_check_mark: |:white_check_mark:|
+|Credentials - Kubernetes |:white_check_mark: |:white_check_mark:|
+|Custom Services  |:white_check_mark: |:white_check_mark:|
+|Dashboard        |:white_check_mark: |:white_check_mark:|
+|Extension        |                   |:white_check_mark:|
+|Maintenance Window |:white_check_mark: |:white_check_mark:|
+|Metric           |:white_check_mark: |:white_check_mark:|
+|Naming - Host    |:white_check_mark: |:white_check_mark:|
+|Naming - Service |:white_check_mark: |:white_check_mark:|
+|Naming - Process Group |:white_check_mark: |:white_check_mark:|
+|Problem Notification |:white_check_mark: |:white_check_mark:|
+|Request Attributes   |:white_check_mark: |:white_check_mark:|
+|Request Naming   |:white_check_mark: |:white_check_mark:|
+|Service Level Objectives  |:white_check_mark: |:white_check_mark:|
+|Span             |:white_check_mark: ||
+|Synthetic Monitor   |:white_check_mark: |:white_check_mark:|
+|Synthetic Location  |:white_check_mark: |:white_check_mark:|
+
+
+
+
+</details>
+
 ## Making changes
 
 ### Repository folder structure
