@@ -9,4 +9,4 @@ BirminghamCTSC:
   longitude: "-1.7815"
   regionCode: "A7"
   status: "ENABLED"
-  skipDeployment: "false"
+  skipDeployment: "true"

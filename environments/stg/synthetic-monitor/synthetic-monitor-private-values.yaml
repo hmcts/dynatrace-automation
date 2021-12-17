@@ -26,147 +26,147 @@ apply-for-probate:
     enabled: "false"
     description: "Apply for Probate"
     url: "https://www.apply-for-probate.service.gov.uk/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 bulk-print-private:
   - name: "Bulk Print - Private"
     enabled: "false"
     description: "Bulk Print - Private"
     url: "http://rpe-send-letter-service-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 bulk-scan-orchestrator-private:
   - name: "Bulk Scan (orchestrator) - Private"
     enabled: "false"
     description: "Bulk Scan (orchestrator) - Private"
     url: "http://bulk-scan-orchestrator-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 bulk-scan-payment-processor-private:
   - name: "Bulk Scan (payment-processor) - Private"
     enabled: "false"
     description: "Bulk Scan (payment-processor) - Private"
     url: "http://bulk-scan-payment-processor-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 bulk-scan-processor-private:
   - name: "Bulk Scan (processor) - Private"
     enabled: "false"
     description: "Bulk Scan (processor) - Private"
     url: "http://bulk-scan-processor-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 bulk-scan-reform-scan-blob-router-private:
   - name: "Bulk Scan (reform-scan-blob-router) - Private"
     enabled: "false"
     description: "Bulk Scan (reform-scan-blob-router) - Private"
     url: "http://reform-scan-blob-router-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 bulk-scan-reform-scan-notification-service-private:
   - name: "Bulk Scan (reform-scan-notification-service) - Private"
     enabled: "false"
     description: "Bulk Scan (reform-scan-notification-service) - Private"
     url: "http://reform-scan-notification-service-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 ccd-platform-private:
   - name: "CCD Platform (Private)"
     enabled: "false"
     description: "CCD Platform (Private)"
     url: "https://www.ccd.platform.hmcts.net/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 ccd-api-gateway-web-prod-health:
   - name: "ccd-api-gateway-web Prod Health"
     enabled: "false"
     description: "ccd-api-gateway-web Prod Health"
     url: "https://gateway.ccd.platform.hmcts.net/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-dm-store-private:
   - name: "Evidence Management (dm-store) - Private"
     enabled: "false"
     description: "Evidence Management (dm-store) - Private"
     url: "http://dm-store-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-anno-private:
   - name: "Evidence Management (em-anno) - Private"
     enabled: "false"
     description: "Evidence Management (em-anno) - Private"
     url: "http://em-anno-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-hrs-api-private:
   - name: "Evidence Management (em-hrs-api) - Private"
     enabled: "false"
     description: "Evidence Management (em-hrs-api) - Private"
     url: "http://em-hrs-api-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-icp-private:
   - name: "Evidence Management (em-icp) - Private"
     enabled: "false"
     description: "Evidence Management (em-icp) - Private"
     url: "http://em-icp-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-npa-private:
   - name: "Evidence Management (em-npa) - Private"
     enabled: "false"
     description: "Evidence Management (em-npa) - Private"
     url: "http://em-npa-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-orchestrator-private:
   - name: "Evidence Management (em-orchestrator) - Private"
     enabled: "false"
     description: "Evidence Management (em-orchestrator) - Private"
     url: "http://em-ccd-orchestrator-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-showcase-private:
   - name: "Evidence Management (em-showcase) - Private"
     enabled: "false"
     description: "Evidence Management (em-showcase) - Private"
     url: "http://em-showcase-aat.service.core-compute-aat.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 evidence-management-em-stitching-private:
   - name: "Evidence Management (em-stitching) - Private"
     enabled: "false"
     description: "Evidence Management (em-stitching) - Private"
     url: "http://em-stitching-prod.service.core-compute-prod.internal/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 exui-manage-my-case-private:
   - name: "ExUI - Manage my Case (Private)"
     enabled: "false"
     description: "ExUI - Manage my Case (Private)"
     url: "https://manage-case.platform.hmcts.net/"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 exui-manage-my-organisation-private:
   - name: "ExUI - Manage my Organisation (Private)"
     enabled: "false"
     description: "ExUI - Manage my Organisation (Private)"
     url: "http://Manage-org.platform.HMCTS.net/"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 idam:
   - name: "IDAM"
     enabled: "false"
     description: "IDAM"
     url: "http://hmcts-access.service.gov.uk/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 stop-probate-application:
   - name: "Stop Probate Application"
     enabled: "false"
     description: "Stop Probate Application"
     url: "https://www.apply-for-probate.service.gov.uk/caveats/health"
-    skipDeployment: "false"
+    skipDeployment: "true"
 
 
 
