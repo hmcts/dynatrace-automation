@@ -29,7 +29,7 @@ Current automation uses a combination of Terraform and [Monaco](https://dynatrac
 
 <details>
 
-<summary>Supported Features Full List</summary>
+<summary>Full List of Supported Features</summary>
 
 |Setting|Terraform|Monaco|
 |:---|:---|:---|
