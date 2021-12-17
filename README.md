@@ -54,7 +54,7 @@ Current automation uses a combination of Terraform and [Monaco](https://dynatrac
 |Service Level Objectives  |:white_check_mark: |:white_check_mark:|
 |Span             |:white_check_mark: ||
 |Synthetic Monitor   |:white_check_mark: |:white_check_mark:|
-|Synthetic Location  |:white_check_mark: |:white_check_mark:|
+|Synthetic Location  |                   |:white_check_mark:|
 
 
 
