@@ -60,6 +60,41 @@ stages:
               keyVaultName: 'infra-vault-nonprod'
               secretsFilter: 'dynatrace-stg-api-key'
 
+          - task: AzureKeyVault@1
+            displayName: 'Read Dynatrace api token from keyvault'
+            inputs:
+              runAsPreJob: false
+              ConnectedServiceName: 'DCD-CFT-Sandbox'
+              keyVaultName: 'infra-vault-nonprod'
+              secretsFilter: 'dynatrace-stg-api-key'
+
+          - task: AzureKeyVault@1
+            displayName: 'Get GitHub API token from Keyvault'
+            inputs:
+              runAsPreJob: false
+              ConnectedServiceName: '${{ variables.service_connection }}'
+              keyVaultName: 'cftptl-intsvc'
+              secretsFilter: 'github-management-api-token'
+
+          - task: Bash@3
+            displayName: 'Test git push to backup repo'
+            env:
+              USER_NAME: hmcts-platform-operations
+              BEARER_TOKEN: $(github-management-api-token)
+            inputs:
+              targetType: 'inline'
+              script: |
+                git switch backup-poc
+                mkdir backup
+                echo "new file' > backup/test.txt
+                ls -al
+                git -c user.name="${USER_NAME}" -c user.email="github-platform-operations@HMCTS.NET"
+                git remote -v
+                git remote set-url origin https://${USER_NAME}:${BEARER_TOKEN}@github.com/hmcts/dynatrace-backup.git
+                git add backup/test.txt
+                git commit  -m "Test write"
+                git push origin backup-poc
+
           - task: Bash@3
             displayName: 'Monaco cli install'
             inputs:
