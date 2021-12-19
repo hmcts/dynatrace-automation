@@ -98,7 +98,8 @@ stages:
                 mkdir backup
                 echo "new file" > backup/test.txt
                 ls -al
-                git -c user.name="${USER_NAME}" -c user.email="github-platform-operations@HMCTS.NET"
+                git config --global user.name ${USER_NAME}
+                git config --global user.email "github-platform-operations@HMCTS.NET"
                 git remote -v
                 git remote set-url origin https://${USER_NAME}:${BEARER_TOKEN}@github.com/hmcts/dynatrace-backup.git
                 git add backup/test.txt
