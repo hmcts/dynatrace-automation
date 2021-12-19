@@ -86,9 +86,9 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                git switch backup-poc
+                ls -al
                 mkdir backup
-                echo "new file' > backup/test.txt
+                echo "new file" > backup/test.txt
                 ls -al
                 git -c user.name="${USER_NAME}" -c user.email="github-platform-operations@HMCTS.NET"
                 git remote -v
