@@ -11,6 +11,11 @@ resources:
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts (1)'
+  - repository: dynatrace-backup
+    type: github
+    ref: refs/heads/master
+    name: hmcts/dynatrace-backup
+    endpoint: 'hmcts (1)'
 
 variables:
   - name: timeoutInMinutes
@@ -53,6 +58,7 @@ stages:
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
           - checkout: self
+          - checkout: dynatrace-backup
           - template: /steps/set-build-repo-suffix-env-var.yaml@cnp-azuredevops-libraries
           - task: AzureKeyVault@1
             displayName: 'Read Dynatrace api token from keyvault'
@@ -87,6 +93,8 @@ stages:
               targetType: 'inline'
               script: |
                 ls -al
+                cd dynatrace-backup
+                git switch backup-poc
                 mkdir backup
                 echo "new file" > backup/test.txt
                 ls -al
