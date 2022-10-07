@@ -1,0 +1,61 @@
+{
+  "name": "{{.name}}",
+  "frequencyMin": 1,
+  "enabled": {{.enabled}},
+  "type": "HTTP",
+  "createdFrom": "GUI",
+  "script": {
+    "version": "1.0",
+    "requests": [
+      {
+        "description": "{{.url}}",
+        "url": "http://{{.url}}/health",
+        "method": "GET",
+        "validation": {
+          "rules": [
+            {
+              "value": ">=400",
+              "passIfFound": false,
+              "type": "httpStatusesList"
+            }
+          ]
+        },
+        "configuration": {
+          "acceptAnyCertificate": true,
+          "followRedirects": true
+        }
+      }
+    ]
+  },
+  "locations": [
+    "SYNTHETIC_LOCATION-CC3E4D2657A13D18"
+  ],
+  "anomalyDetection": {
+    "outageHandling": {
+      "globalOutage": true,
+      "globalOutagePolicy": {
+        "consecutiveRuns": 1
+      },
+      "localOutage": false,
+      "localOutagePolicy": {
+        "affectedLocations": null,
+        "consecutiveRuns": null
+      }
+    },
+    "loadingTimeThresholds": {
+      "enabled": true,
+      "thresholds": []
+    }
+  },
+  "tags": [],
+  "managementZones": [],
+  "automaticallyAssignedApps": [],
+  "manuallyAssignedApps": [],
+  "requests": [
+    {
+      "entityId": "HTTP_CHECK_STEP-7E413CEDC4273B31",
+      "name": "{{.url}}",
+      "sequenceNumber": 1
+    }
+  ]
+}

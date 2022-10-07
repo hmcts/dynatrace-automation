@@ -1,0 +1,26 @@
+{
+  "enabled": true,
+  "name": "{{.name}}",
+  "errorBudgetBurnRate": {
+    "burnRateVisualizationEnabled": true,
+    "fastBurnThreshold": 10,
+    "burnRateValue": 0,
+    "burnRateType": "NONE",
+    "sloValue": 100
+  },
+  "metricKey": "{{.metricKey}}",
+  "metricExpression": "{{.metricExpression}}",
+  "target": {{.target}},
+  "warning": {{.warning}},
+  "evaluationType": "AGGREGATE",
+  "timeframe": "-1w",
+  "filter": "{{.entitySelector}}",
+  "relatedOpenProblems": 0,
+  "relatedTotalProblems": 0,
+  "numeratorValue": 0,
+  "metricRate": "",
+  "denominatorValue": 0,
+  "useRateMetric": true,
+  "metricNumerator": "",
+  "metricDenominator": ""
+}

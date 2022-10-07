@@ -1,0 +1,175 @@
+config:
+- ac-int-gateway-ccd-demo-platform-hmcts-net: http-availability.json
+- ccd-admin-web-demo-platform-hmcts-net: http-availability.json
+- gateway-ccd-demo-platform-hmcts-net: http-availability.json
+- ccd-admin-ccd-int-demo-platform-hmcts-net: http-availability.json
+- gateway-ccd-int-demo-platform-hmcts-net: http-availability.json
+- civil-citizen-ui-demo-platform-hmcts-net: http-availability.json
+- decree-absolute-aks-demo-platform-hmcts-net: http-availability.json
+- decree-nisi-aks-demo-platform-hmcts-net: http-availability.json
+- petitioner-frontend-aks-demo-platform-hmcts-net: http-availability.json
+- respond-divorce-aks-demo-platform-hmcts-net: http-availability.json
+- paybubble-int-demo-platform-hmcts-net: http-availability.json
+- paybubble-demo-platform-hmcts-net: http-availability.json
+- idam-web-admin-demo-platform-hmcts-net: http-availability.json
+- idam-web-public-demo-platform-hmcts-net: http-availability.json
+- moneyclaims-demo-platform-hmcts-net: http-availability.json
+- nfdiv-demo-platform-hmcts-net: http-availability.json
+- probate-demo-platform-hmcts-net: http-availability.json
+- benefit-appeal-demo-platform-hmcts-net: http-availability.json
+- register-org-demo-platform-hmcts-net: http-availability.json
+- manage-case-ac-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-access-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-flags-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-hearings-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-link-unlink-cases-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-multiday-hearings-int-demo-platform-hmcts-net: http-availability.json
+- manage-case-demo-platform-hmcts-net: http-availability.json
+- manage-case-srt-demo-platform-hmcts-net: http-availability.json
+- manage-case-wa-int-demo-platform-hmcts-net: http-availability.json
+
+ac-int-gateway-ccd-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] ac-int-gateway-ccd.demo.platform.hmcts.net"
+- url: ac-int-gateway-ccd.demo.platform.hmcts.net
+- enabled: "true"
+
+ccd-admin-web-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] ccd-admin-web.demo.platform.hmcts.net"
+- url: ccd-admin-web.demo.platform.hmcts.net
+- enabled: "true"
+
+gateway-ccd-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] gateway-ccd.demo.platform.hmcts.net"
+- url: gateway-ccd.demo.platform.hmcts.net
+- enabled: "true"
+
+ccd-admin-ccd-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] ccd-admin-ccd-int.demo.platform.hmcts.net"
+- url: ccd-admin-ccd-int.demo.platform.hmcts.net
+- enabled: "true"
+
+gateway-ccd-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] gateway-ccd-int.demo.platform.hmcts.net"
+- url: gateway-ccd-int.demo.platform.hmcts.net
+- enabled: "true"
+
+civil-citizen-ui-demo-platform-hmcts-net:
+- name: "[CFT - CIVIL MONEY CLAIMS - DEMO] civil-citizen-ui.demo.platform.hmcts.net"
+- url: civil-citizen-ui.demo.platform.hmcts.net
+- enabled: "true"
+
+decree-absolute-aks-demo-platform-hmcts-net:
+- name: "[CFT - DIVORCE - DEMO] decree-absolute-aks.demo.platform.hmcts.net"
+- url: decree-absolute-aks.demo.platform.hmcts.net
+- enabled: "true"
+
+decree-nisi-aks-demo-platform-hmcts-net:
+- name: "[CFT - DIVORCE - DEMO] decree-nisi-aks.demo.platform.hmcts.net"
+- url: decree-nisi-aks.demo.platform.hmcts.net
+- enabled: "true"
+
+petitioner-frontend-aks-demo-platform-hmcts-net:
+- name: "[CFT - DIVORCE - DEMO] petitioner-frontend-aks.demo.platform.hmcts.net"
+- url: petitioner-frontend-aks.demo.platform.hmcts.net
+- enabled: "true"
+
+respond-divorce-aks-demo-platform-hmcts-net:
+- name: "[CFT - DIVORCE - DEMO] respond-divorce-aks.demo.platform.hmcts.net"
+- url: respond-divorce-aks.demo.platform.hmcts.net
+- enabled: "true"
+
+paybubble-int-demo-platform-hmcts-net:
+- name: "[CFT - FEES & PAYMENT - DEMO] paybubble-int.demo.platform.hmcts.net"
+- url: paybubble-int.demo.platform.hmcts.net
+- enabled: "true"
+
+paybubble-demo-platform-hmcts-net:
+- name: "[CFT - FEES & PAYMENT - DEMO] paybubble.demo.platform.hmcts.net"
+- url: paybubble.demo.platform.hmcts.net
+- enabled: "true"
+
+idam-web-admin-demo-platform-hmcts-net:
+- name: "[CFT - IDAM - DEMO] idam-web-admin.demo.platform.hmcts.net"
+- url: idam-web-admin.demo.platform.hmcts.net
+- enabled: "true"
+
+idam-web-public-demo-platform-hmcts-net:
+- name: "[CFT - IDAM - DEMO] idam-web-public.demo.platform.hmcts.net"
+- url: idam-web-public.demo.platform.hmcts.net
+- enabled: "true"
+
+moneyclaims-demo-platform-hmcts-net:
+- name: "[CFT - CIVIL MONEY CLAIMS - DEMO] moneyclaims.demo.platform.hmcts.net"
+- url: moneyclaims.demo.platform.hmcts.net
+- enabled: "true"
+
+nfdiv-demo-platform-hmcts-net:
+- name: "[CFT - NO FAULT DIVORCE - DEMO] nfdiv.demo.platform.hmcts.net"
+- url: nfdiv.demo.platform.hmcts.net
+- enabled: "true"
+
+probate-demo-platform-hmcts-net:
+- name: "[CFT - PROBATE - DEMO] probate.demo.platform.hmcts.net"
+- url: probate.demo.platform.hmcts.net
+- enabled: "true"
+
+benefit-appeal-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] benefit-appeal.demo.platform.hmcts.net"
+- url: benefit-appeal.demo.platform.hmcts.net
+- enabled: "true"
+
+register-org-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] register-org.demo.platform.hmcts.net"
+- url: register-org.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-ac-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-ac-int.demo.platform.hmcts.net"
+- url: manage-case-ac-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-access-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-access-int.demo.platform.hmcts.net"
+- url: manage-case-access-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-flags-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-flags-int.demo.platform.hmcts.net"
+- url: manage-case-flags-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-hearings-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-hearings-int.demo.platform.hmcts.net"
+- url: manage-case-hearings-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-int.demo.platform.hmcts.net"
+- url: manage-case-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-link-unlink-cases-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-link-unlink-cases-int.demo.platform.hmcts.net"
+- url: manage-case-link-unlink-cases-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-multiday-hearings-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-multiday-hearings-int.demo.platform.hmcts.net"
+- url: manage-case-multiday-hearings-int.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case.demo.platform.hmcts.net"
+- url: manage-case.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-srt-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-srt.demo.platform.hmcts.net"
+- url: manage-case-srt.demo.platform.hmcts.net
+- enabled: "true"
+
+manage-case-wa-int-demo-platform-hmcts-net:
+- name: "[CFT - CCD - DEMO] manage-case-wa-int.demo.platform.hmcts.net"
+- url: manage-case-wa-int.demo.platform.hmcts.net
+- enabled: "true"

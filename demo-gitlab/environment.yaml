@@ -1,0 +1,9 @@
+ebe20728:
+    - name: "Production"
+    - env-url: "https://ebe20728.live.dynatrace.com"
+    - env-token-name: "ebe20728-token"
+
+# yrk32651:
+#     - name: "Non Production"
+#     - env-url: "https://yrk32651.live.dynatrace.com"
+#     - env-token-name: "yrk32651-token"

@@ -1,0 +1,13 @@
+config:
+- genericDashboard: generic-template.json
+- webVitals: coreWebVitals-Apdex.json
+- license: license-overview.json
+
+genericDashboard:
+  - name: Generic V2 - Overview
+
+webVitals:
+  - name: Core Web Vitals & Apdex
+
+license:
+  - name: Licensing Overview

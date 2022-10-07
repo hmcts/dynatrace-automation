@@ -1,0 +1,651 @@
+config:
+# - CFT_Availability: wizard.json
+# - CFT_Access_Management_Availability: wizard.json
+# - CFT_BAIS_Availability: wizard.json
+# - CFT_Bulk_Print_Availability: wizard.json
+# - CFT_Bulk_Scan_Availability: wizard.json
+# - CFT_CAPS_Availability: wizard.json
+# - CFT_CCD_Availability: wizard.json
+# - CFT_CEFile_Availability: wizard.json
+# - CFT_CGI_Availability: wizard.json
+# - CFT_CaseMan_Availability: wizard.json
+# - CFT_Civil_Money_Claims_Availability: wizard.json
+# - CFT_Civil_Unspec_Availability: wizard.json
+# - CFT_Darts_IdAM_Availability: wizard.json
+# - CFT_Divorce_Availability: wizard.json
+# - CFT_Docmosis_Availability: wizard.json
+# - CFT_ECM_Availability: wizard.json
+- CFT_ET_Availability: wizard.json
+# - CFT_Elasticsearch_Availability: wizard.json
+# - CFT_Evidence_Management_Availability: wizard.json
+# - CFT_ExUI_Availability: wizard.json
+# - CFT_Family_Public_Law_Availability: wizard.json
+# - CFT_Fees_Pay_Availability: wizard.json
+# - CFT_Financial_Remedy_Availability: wizard.json
+# - CFT_HMC_Availability: wizard.json
+# - CFT_IDAM_Availability: wizard.json
+# - CFT_Immigration_and_Asylum_Availability: wizard.json
+# - CFT_Legal_Rep_CMC_Unspec_Availability: wizard.json
+# - CFT_Log_Audit_Availability: wizard.json
+# - CFT_MCOL_Availability: wizard.json
+# - CFT_Managed_Payments_BAR_Availability: wizard.json
+# - CFT_New_Divorce_Law_Availability: wizard.json
+# - CFT_PCOL_Availability: wizard.json
+# - CFT_PCQ_Availability: wizard.json
+# - CFT_Palo_Alto_Prod_AAT_Availability: wizard.json
+# - CFT_Probate_Availability: wizard.json
+# - CFT_Professional_Reference_Data_Availability: wizard.json
+# - CFT_RPTS_Availability: wizard.json
+# - CFT_Retain_and_Dispose_Availability: wizard.json
+# - CFT_SDT_Availability: wizard.json
+# - CFT_SOC_Availability: wizard.json
+# - CFT_SSCS_Availability: wizard.json
+# - CFT_Task_Management_Availability: wizard.json
+# - CFT_Heritage_Applications_Availability: wizard.json
+# - Crime_CP_PRD_Availability: wizard.json
+# - Crime_CP_PRP_Availability: wizard.json
+# - Crime_CP_PRX_Availability: wizard.json
+# - Crime_IdAM_PRD_Availability: wizard.json
+# - Crime_IdAM_PRP_Availability: wizard.json
+# - Crime_Online_Plea_Availability: wizard.json
+# - Crime_ROTA_PRD_Availability: wizard.json
+# - Crime_ROTA_PRP_Availability: wizard.json
+# - Crime_PRD_CP_ROTA_IDAM_Availability: wizard.json
+# - DTS_Atlassian_Confluence_PREPROD_Availability: wizard.json
+# - DTS_Atlassian_Confluence_PROD_Availability: wizard.json
+# - DTS_Atlassian_Crowd_PREPROD_Availability: wizard.json
+# - DTS_Atlassian_Crowd_PROD_Availability: wizard.json
+# - DTS_Atlassian_Jira_PREPROD_Availability: wizard.json
+# - DTS_Atlassian_Jira_PROD_Availability: wizard.json
+# - DTS_FACT_Availability: wizard.json
+# - FH_CVP_PROD_Availability: wizard.json
+# - FH_PIP_Prod_Availability: wizard.json
+# - FH_VH_PROD_Availability: wizard.json
+# - Future_Operations_Availability: wizard.json
+# - ITOM_POC_Availability: wizard.json
+# - SVCOFF_Availability: wizard.json
+
+# # Availability
+# CFT_Availability:
+# - name: "[CFT] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Access_Management_Availability:
+# - name: "[CFT - Access Management] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Access Management')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Access_Management_Availability'
+# - skipDeployment: 'true'
+
+# CFT_BAIS_Availability:
+# - name: "[CFT - BAIS] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - BAIS')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_BAIS_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Bulk_Print_Availability:
+# - name: "[CFT - Bulk Print] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Bulk Print')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Bulk_Print_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Bulk_Scan_Availability:
+# - name: "[CFT - Bulk Scan] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Bulk Scan')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Bulk_Scan_Availability'
+# - skipDeployment: 'true'
+
+# CFT_CAPS_Availability:
+# - name: "[CFT - CAPS] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - CAPS')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_CAPS_Availability'
+# - skipDeployment: 'true'
+
+# CFT_CCD_Availability:
+# - name: "[CFT - CCD] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - CCD')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_CCD_Availability'
+# - skipDeployment: 'true'
+
+# CFT_CEFile_Availability:
+# - name: "[CFT - CEFile] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - CEFile')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_CEFile_Availability'
+# - skipDeployment: 'true'
+
+# CFT_CGI_Availability:
+# - name: "[CFT - CGI] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - CGI')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_CGI_Availability'
+# - skipDeployment: 'true'
+
+# CFT_CaseMan_Availability:
+# - name: "[CFT - CaseMan] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - CaseMan')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_CaseMan_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Civil_Money_Claims_Availability:
+# - name: "[CFT - Civil Money Claims] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Civil Money Claims')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Civil_Money_Claims_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Civil_Unspec_Availability:
+# - name: "[CFT - Civil Unspec] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Civil Unspec')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Civil_Unspec_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Darts_IdAM_Availability:
+# - name: "[CFT - Darts IdAM] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Darts IdAM')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Darts_IdAM_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Divorce_Availability:
+# - name: "[CFT - Divorce] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Divorce')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Divorce_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Docmosis_Availability:
+# - name: "[CFT - Docmosis] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Docmosis')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Docmosis_Availability'
+# - skipDeployment: 'true'
+
+# CFT_ECM_Availability:
+# - name: "[CFT - ECM] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - ECM')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_ECM_Availability'
+# - skipDeployment: 'true'
+
+CFT_ET_Availability:
+- name: "[CFT - ET] Availability"
+- metricExpression: "(builtin:synthetic.http.availability.location.total:splitBy())"
+- entitySelector: "type(HTTP_CHECK), mzName(CFT - ET)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_ET_Availability'
+
+# CFT_Elasticsearch_Availability:
+# - name: "[CFT - Elasticsearch] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Elasticsearch')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Elasticsearch_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Evidence_Management_Availability:
+# - name: "[CFT - Evidence Management] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Evidence Management')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Evidence_Management_Availability'
+# - skipDeployment: 'true'
+
+# CFT_ExUI_Availability:
+# - name: "[CFT - ExUI] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - ExUI')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_ExUI_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Family_Public_Law_Availability:
+# - name: "[CFT - Family Public Law] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Family Public Law')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Family_Public_Law_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Fees_Pay_Availability:
+# - name: "[CFT - Fees & Pay] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Fees & Pay')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Fees_Pay_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Financial_Remedy_Availability:
+# - name: "[CFT - Financial Remedy] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT_Financial_Remedy')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Financial_Remedy_Availability'
+# - skipDeployment: 'true'
+
+# CFT_HMC_Availability:
+# - name: "[CFT - HMC] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - HMC')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_HMC_Availability'
+# - skipDeployment: 'true'
+
+# CFT_IDAM_Availability:
+# - name: "[CFT - IDAM] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - IDAM')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_IDAM_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Immigration_and_Asylum_Availability:
+# - name: "[CFT - Immigration and Asylum] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Immigration and Asylum')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Immigration_and_Asylum_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Legal_Rep_CMC_Unspec_Availability:
+# - name: "[CFT - Legal Rep (CMC Unspec)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Legal Rep (CMC Unspec)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Legal_Rep_CMC_Unspec_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Log_Audit_Availability:
+# - name: "[CFT - Log & Audit] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Log & Audit')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Log_Audit_Availability'
+# - skipDeployment: 'true'
+
+# CFT_MCOL_Availability:
+# - name: "[CFT - MCOL] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - MCOL')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_MCOL_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Managed_Payments_BAR_Availability:
+# - name: "[CFT - Managed Payments (BAR)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Managed Payments (BAR)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Managed_Payments_BAR_Availability'
+# - skipDeployment: 'true'
+
+# CFT_New_Divorce_Law_Availability:
+# - name: "[CFT - New Divorce Law] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - New Divorce Law')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_New_Divorce_Law_Availability'
+# - skipDeployment: 'true'
+
+# CFT_PCOL_Availability:
+# - name: "[CFT - PCOL] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - PCOL')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_PCOL_Availability'
+# - skipDeployment: 'true'
+
+# CFT_PCQ_Availability:
+# - name: "[CFT - PCQ] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - PCQ')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_PCQ_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Palo_Alto_Prod_AAT_Availability:
+# - name: "[CFT - Palo Alto (Prod & AAT)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Palo Alto (Prod & AAT)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Palo_Alto_Prod_AAT_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Probate_Availability:
+# - name: "[CFT - Probate] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Probate')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Probate_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Professional_Reference_Data_Availability:
+# - name: "[CFT - Professional Reference Data] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Professional Reference Data')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Professional_Reference_Data_Availability'
+# - skipDeployment: 'true'
+
+# CFT_RPTS_Availability:
+# - name: "[CFT - RPTS] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - RPTS')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_RPTS_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Retain_and_Dispose_Availability:
+# - name: "[CFT - Retain and Dispose] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Retain and Dispose')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Retain_and_Dispose_Availability'
+# - skipDeployment: 'true'
+
+# CFT_SDT_Availability:
+# - name: "[CFT - SDT] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - SDT')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_SDT_Availability'
+# - skipDeployment: 'true'
+
+# CFT_SOC_Availability:
+# - name: "[CFT - SOC] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - SOC')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_SOC_Availability'
+# - skipDeployment: 'true'
+
+# CFT_SSCS_Availability:
+# - name: "[CFT - SSCS] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - SSCS')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_SSCS_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Task_Management_Availability:
+# - name: "[CFT - Task Management] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT - Task Management')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Task_Management_Availability'
+# - skipDeployment: 'true'
+
+# CFT_Heritage_Applications_Availability:
+# - name: "[CFT – Heritage Applications] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('CFT – Heritage Applications')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Heritage_Applications_Availability'
+# - skipDeployment: 'true'
+
+# Crime_CP_PRD_Availability:
+# - name: "[Crime - CP (PRD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - CP (PRD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_CP_PRD_Availability'
+# - skipDeployment: 'true'
+
+# Crime_CP_PRP_Availability:
+# - name: "[Crime - CP (PRP)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - CP (PRP)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_CP_PRP_Availability'
+# - skipDeployment: 'true'
+
+# Crime_CP_PRX_Availability:
+# - name: "[Crime - CP (PRX)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - CP (PRX)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_CP_PRX_Availability'
+# - skipDeployment: 'true'
+
+# Crime_IdAM_PRD_Availability:
+# - name: "[Crime - IdAM - PRD] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - IdAM - PRD')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_IdAM_PRD_Availability'
+# - skipDeployment: 'true'
+
+# Crime_IdAM_PRP_Availability:
+# - name: "[Crime - IdAM - PRP] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - IdAM - PRP')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_IdAM_PRP_Availability'
+# - skipDeployment: 'true'
+
+# Crime_Online_Plea_Availability:
+# - name: "[Crime - Online Plea] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - Online Plea')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_Online_Plea_Availability'
+# - skipDeployment: 'true'
+
+# Crime_ROTA_PRD_Availability:
+# - name: "[Crime - ROTA - PRD] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - ROTA - PRD')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_ROTA_PRD_Availability'
+# - skipDeployment: 'true'
+
+# Crime_ROTA_PRP_Availability:
+# - name: "[Crime - ROTA - PRP] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime - ROTA - PRP')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_ROTA_PRP_Availability'
+# - skipDeployment: 'true'
+
+# Crime_PRD_CP_ROTA_IDAM_Availability:
+# - name: "[Crime (PRD) CP - ROTA - IDAM] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Crime (PRD) CP - ROTA - IDAM')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_PRD_CP_ROTA_IDAM_Availability'
+# - skipDeployment: 'true'
+
+# DTS_Atlassian_Confluence_PREPROD_Availability:
+# - name: "[DTS - Atlassian – Confluence (PREPROD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - Atlassian – Confluence (PREPROD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Confluence_PREPROD_Availability'
+# - skipDeployment: 'true'
+
+# DTS_Atlassian_Confluence_PROD_Availability:
+# - name: "[DTS - Atlassian – Confluence (PROD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - Atlassian – Confluence (PROD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Confluence_PROD_Availability'
+# - skipDeployment: 'true'
+
+# DTS_Atlassian_Crowd_PREPROD_Availability:
+# - name: "[DTS - Atlassian – Crowd (PREPROD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - Atlassian – Crowd (PREPROD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Crowd_PREPROD_Availability'
+# - skipDeployment: 'true'
+
+# DTS_Atlassian_Crowd_PROD_Availability:
+# - name: "[DTS - Atlassian – Crowd (PROD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - Atlassian – Crowd (PROD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Crowd_PROD_Availability'
+# - skipDeployment: 'true'
+
+# DTS_Atlassian_Jira_PREPROD_Availability:
+# - name: "[DTS - Atlassian – Jira (PREPROD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - Atlassian – Jira (PREPROD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Jira_PREPROD_Availability'
+# - skipDeployment: 'true'
+
+# DTS_Atlassian_Jira_PROD_Availability:
+# - name: "[DTS - Atlassian – Jira (PROD)] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - Atlassian – Jira (PROD)')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Jira_PROD_Availability'
+# - skipDeployment: 'true'
+
+# DTS_FACT_Availability:
+# - name: "[DTS - FACT] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('DTS - FACT')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_FACT_Availability'
+# - skipDeployment: 'true'
+
+# FH_CVP_PROD_Availability:
+# - name: "[FH - CVP - PROD] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('FH - CVP - PROD')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.FH_CVP_PROD_Availability'
+# - skipDeployment: 'true'
+
+# FH_PIP_Prod_Availability:
+# - name: "[FH - PIP - Prod] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('FH - PIP - Prod')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.FH_PIP_Prod_Availability'
+# - skipDeployment: 'true'
+
+# FH_VH_PROD_Availability:
+# - name: "[FH - VH - PROD] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('FH - VH - PROD')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.FH_VH_PROD_Availability'
+# - skipDeployment: 'true'
+
+# Future_Operations_Availability:
+# - name: "[Future Operations - 8x8] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('Future Operations - 8x8')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Future_Operations_Availability'
+# - skipDeployment: 'true'
+
+# ITOM_POC_Availability:
+# - name: "[ITOM POC] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('ITOM POC')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.ITOM_POC_Availability'
+# - skipDeployment: 'true'
+
+# SVCOFF_Availability:
+# - name: "[SVCOFF] Availability"
+# - metricExpression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+# - entitySelector: "type(HTTP_CHECK), mzName('SVCOFF')"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.SVCOFF_Availability'
+# - skipDeployment: 'true'

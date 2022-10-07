@@ -1,0 +1,650 @@
+config:
+- CFT_Reliability: wizard.json
+- CFT_Access_Management_Reliability: wizard.json
+- CFT_BAIS_Reliability: wizard.json
+- CFT_Bulk_Print_Reliability: wizard.json
+- CFT_Bulk_Scan_Reliability: wizard.json
+- CFT_CAPS_Reliability: wizard.json
+- CFT_CCD_Reliability: wizard.json
+- CFT_CEFile_Reliability: wizard.json
+- CFT_CGI_Reliability: wizard.json
+- CFT_CaseMan_Reliability: wizard.json
+- CFT_Civil_Money_Claims_Reliability: wizard.json
+- CFT_Civil_Unspec_Reliability: wizard.json
+- CFT_Darts_IdAM_Reliability: wizard.json
+- CFT_Divorce_Reliability: wizard.json
+- CFT_Docmosis_Reliability: wizard.json
+- CFT_ECM_Reliability: wizard.json
+- CFT_ET_Reliability: wizard.json
+# - CFT_Elasticsearch_Reliability: wizard.json
+# - CFT_Evidence_Management_Reliability: wizard.json
+# - CFT_ExUI_Reliability: wizard.json
+# - CFT_Family_Public_Law_Reliability: wizard.json
+# - CFT_Fees_Pay_Reliability: wizard.json
+# - CFT_Financial_Remedy_Reliability: wizard.json
+# - CFT_HMC_Reliability: wizard.json
+# - CFT_IDAM_Reliability: wizard.json
+# - CFT_Immigration_and_Asylum_Reliability: wizard.json
+# - CFT_Legal_Rep_CMC_Unspec_Reliability: wizard.json
+# - CFT_Log_Audit_Reliability: wizard.json
+# - CFT_MCOL_Reliability: wizard.json
+# - CFT_Managed_Payments_BAR_Reliability: wizard.json
+# - CFT_New_Divorce_Law_Reliability: wizard.json
+# - CFT_PCOL_Reliability: wizard.json
+# - CFT_PCQ_Reliability: wizard.json
+# - CFT_Palo_Alto_Prod_AAT_Reliability: wizard.json
+# - CFT_Probate_Reliability: wizard.json
+# - CFT_Professional_Reference_Data_Reliability: wizard.json
+# - CFT_RPTS_Reliability: wizard.json
+# - CFT_Retain_and_Dispose_Reliability: wizard.json
+# - CFT_SDT_Reliability: wizard.json
+# - CFT_SOC_Reliability: wizard.json
+# - CFT_SSCS_Reliability: wizard.json
+# - CFT_Task_Management_Reliability: wizard.json
+# - CFT_Heritage_Applications_Reliability: wizard.json
+# - Crime_CP_PRD_Reliability: wizard.json
+# - Crime_CP_PRP_Reliability: wizard.json
+# - Crime_CP_PRX_Reliability: wizard.json
+# - Crime_IdAM_PRD_Reliability: wizard.json
+# - Crime_IdAM_PRP_Reliability: wizard.json
+# - Crime_Online_Plea_Reliability: wizard.json
+# - Crime_ROTA_PRD_Reliability: wizard.json
+# - Crime_ROTA_PRP_Reliability: wizard.json
+# - Crime_PRD_CP_ROTA_IDAM_Reliability: wizard.json
+# - DTS_Atlassian_Confluence_PREPROD_Reliability: wizard.json
+# - DTS_Atlassian_Confluence_PROD_Reliability: wizard.json
+# - DTS_Atlassian_Crowd_PREPROD_Reliability: wizard.json
+# - DTS_Atlassian_Crowd_PROD_Reliability: wizard.json
+# - DTS_Atlassian_Jira_PREPROD_Reliability: wizard.json
+# - DTS_Atlassian_Jira_PROD_Reliability: wizard.json
+# - DTS_FACT_Reliability: wizard.json
+# - FH_CVP_PROD_Reliability: wizard.json
+# - FH_PIP_Prod_Reliability: wizard.json
+# - FH_VH_PROD_Reliability: wizard.json
+# - Future_Operations_Reliability: wizard.json
+# - ITOM_POC_Reliability: wizard.json
+# - SVCOFF_Reliability: wizard.json
+
+# Reliability
+CFT_Reliability:
+- name: "[CFT] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Reliability'
+
+
+CFT_Access_Management_Reliability:
+- name: "[CFT - Access Management] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Access Management)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Access_Management_Reliability'
+
+
+CFT_BAIS_Reliability:
+- name: "[CFT - BAIS] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - BAIS)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_BAIS_Reliability'
+
+
+CFT_Bulk_Print_Reliability:
+- name: "[CFT - Bulk Print] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Bulk Print)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Bulk_Print_Reliability'
+
+
+CFT_Bulk_Scan_Reliability:
+- name: "[CFT - Bulk Scan] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Bulk Scan)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Bulk_Scan_Reliability'
+
+
+CFT_CAPS_Reliability:
+- name: "[CFT - CAPS] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - CAPS)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_CAPS_Reliability'
+
+
+CFT_CCD_Reliability:
+- name: "[CFT - CCD] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - CCD)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_CCD_Reliability'
+
+
+CFT_CEFile_Reliability:
+- name: "[CFT - CEFile] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - CEFile)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_CEFile_Reliability'
+
+
+CFT_CGI_Reliability:
+- name: "[CFT - CGI] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - CGI)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_CGI_Reliability'
+
+
+CFT_CaseMan_Reliability:
+- name: "[CFT - CaseMan] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - CaseMan)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_CaseMan_Reliability'
+
+
+CFT_Civil_Money_Claims_Reliability:
+- name: "[CFT - Civil Money Claims] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Civil Money Claims)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Civil_Money_Claims_Reliability'
+
+
+CFT_Civil_Unspec_Reliability:
+- name: "[CFT - Civil Unspec] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Civil Unspec)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Civil_Unspec_Reliability'
+
+
+CFT_Darts_IdAM_Reliability:
+- name: "[CFT - Darts IdAM] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Darts IdAM)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Darts_IdAM_Reliability'
+
+
+CFT_Divorce_Reliability:
+- name: "[CFT - Divorce] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Divorce)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Divorce_Reliability'
+
+
+CFT_Docmosis_Reliability:
+- name: "[CFT - Docmosis] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - Docmosis)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_Docmosis_Reliability'
+
+
+CFT_ECM_Reliability:
+- name: "[CFT - ECM] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - ECM)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_ECM_Reliability'
+
+
+CFT_ET_Reliability:
+- name: "[CFT - ET] Reliability"
+- metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+- entitySelector: "type(SERVICE), mzName(CFT - ET)"
+- target: '98'
+- warning: '99'
+- metricKey: 'func:slo.CFT_ET_Reliability'
+
+# CFT_Elasticsearch_Reliability:
+# - name: "[CFT - Elasticsearch] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Elasticsearch)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Elasticsearch_Reliability'
+
+
+# CFT_Evidence_Management_Reliability:
+# - name: "[CFT - Evidence Management] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Evidence Management)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Evidence_Management_Reliability'
+
+
+# CFT_ExUI_Reliability:
+# - name: "[CFT - ExUI] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - ExUI)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_ExUI_Reliability'
+
+
+# CFT_Family_Public_Law_Reliability:
+# - name: "[CFT - Family Public Law] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Family Public Law)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Family_Public_Law_Reliability'
+
+
+# CFT_Fees_Pay_Reliability:
+# - name: "[CFT - Fees & Pay] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Fees & Pay)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Fees_Pay_Reliability'
+
+
+# CFT_Financial_Remedy_Reliability:
+# - name: "[CFT - Financial Remedy] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT_Financial_Remedy)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Financial_Remedy_Reliability'
+
+
+# CFT_HMC_Reliability:
+# - name: "[CFT - HMC] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - HMC)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_HMC_Reliability'
+
+
+# CFT_IDAM_Reliability:
+# - name: "[CFT - IDAM] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - IDAM)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_IDAM_Reliability'
+
+
+# CFT_Immigration_and_Asylum_Reliability:
+# - name: "[CFT - Immigration and Asylum] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Immigration and Asylum)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Immigration_and_Asylum_Reliability'
+
+
+# CFT_Legal_Rep_CMC_Unspec_Reliability:
+# - name: "[CFT - Legal Rep (CMC Unspec)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Legal Rep (CMC Unspec))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Legal_Rep_CMC_Unspec_Reliability'
+
+
+# CFT_Log_Audit_Reliability:
+# - name: "[CFT - Log & Audit] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Log & Audit)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Log_Audit_Reliability'
+
+
+# CFT_MCOL_Reliability:
+# - name: "[CFT - MCOL] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - MCOL)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_MCOL_Reliability'
+
+
+# CFT_Managed_Payments_BAR_Reliability:
+# - name: "[CFT - Managed Payments (BAR)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Managed Payments (BAR))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Managed_Payments_BAR_Reliability'
+
+
+# CFT_New_Divorce_Law_Reliability:
+# - name: "[CFT - New Divorce Law] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - New Divorce Law)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_New_Divorce_Law_Reliability'
+
+
+# CFT_PCOL_Reliability:
+# - name: "[CFT - PCOL] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - PCOL)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_PCOL_Reliability'
+
+
+# CFT_PCQ_Reliability:
+# - name: "[CFT - PCQ] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - PCQ)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_PCQ_Reliability'
+
+
+# CFT_Palo_Alto_Prod_AAT_Reliability:
+# - name: "[CFT - Palo Alto (Prod & AAT)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Palo Alto (Prod & AAT))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Palo_Alto_Prod_AAT_Reliability'
+
+
+# CFT_Probate_Reliability:
+# - name: "[CFT - Probate] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Probate)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Probate_Reliability'
+
+
+# CFT_Professional_Reference_Data_Reliability:
+# - name: "[CFT - Professional Reference Data] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Professional Reference Data)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Professional_Reference_Data_Reliability'
+
+
+# CFT_RPTS_Reliability:
+# - name: "[CFT - RPTS] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - RPTS)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_RPTS_Reliability'
+
+
+# CFT_Retain_and_Dispose_Reliability:
+# - name: "[CFT - Retain and Dispose] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Retain and Dispose)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Retain_and_Dispose_Reliability'
+
+
+# CFT_SDT_Reliability:
+# - name: "[CFT - SDT] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - SDT)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_SDT_Reliability'
+
+
+# CFT_SOC_Reliability:
+# - name: "[CFT - SOC] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - SOC)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_SOC_Reliability'
+
+
+# CFT_SSCS_Reliability:
+# - name: "[CFT - SSCS] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - SSCS)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_SSCS_Reliability'
+
+
+# CFT_Task_Management_Reliability:
+# - name: "[CFT - Task Management] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT - Task Management)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Task_Management_Reliability'
+
+
+# CFT_Heritage_Applications_Reliability:
+# - name: "[CFT – Heritage Applications] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(CFT – Heritage Applications)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.CFT_Heritage_Applications_Reliability'
+
+
+# Crime_CP_PRD_Reliability:
+# - name: "[Crime - CP (PRD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - CP (PRD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_CP_PRD_Reliability'
+
+
+# Crime_CP_PRP_Reliability:
+# - name: "[Crime - CP (PRP)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - CP (PRP))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_CP_PRP_Reliability'
+
+
+# Crime_CP_PRX_Reliability:
+# - name: "[Crime - CP (PRX)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - CP (PRX))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_CP_PRX_Reliability'
+
+
+# Crime_IdAM_PRD_Reliability:
+# - name: "[Crime - IdAM - PRD] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - IdAM - PRD)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_IdAM_PRD_Reliability'
+
+
+# Crime_IdAM_PRP_Reliability:
+# - name: "[Crime - IdAM - PRP] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - IdAM - PRP)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_IdAM_PRP_Reliability'
+
+
+# Crime_Online_Plea_Reliability:
+# - name: "[Crime - Online Plea] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - Online Plea)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_Online_Plea_Reliability'
+
+
+# Crime_ROTA_PRD_Reliability:
+# - name: "[Crime - ROTA - PRD] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - ROTA - PRD)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_ROTA_PRD_Reliability'
+
+
+# Crime_ROTA_PRP_Reliability:
+# - name: "[Crime - ROTA - PRP] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime - ROTA - PRP)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_ROTA_PRP_Reliability'
+
+
+# Crime_PRD_CP_ROTA_IDAM_Reliability:
+# - name: "[Crime (PRD) CP - ROTA - IDAM] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Crime (PRD) CP - ROTA - IDAM)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Crime_PRD_CP_ROTA_IDAM_Reliability'
+
+
+# DTS_Atlassian_Confluence_PREPROD_Reliability:
+# - name: "[DTS - Atlassian – Confluence (PREPROD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - Atlassian – Confluence (PREPROD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Confluence_PREPROD_Reliability'
+
+
+# DTS_Atlassian_Confluence_PROD_Reliability:
+# - name: "[DTS - Atlassian – Confluence (PROD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - Atlassian – Confluence (PROD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Confluence_PROD_Reliability'
+
+
+# DTS_Atlassian_Crowd_PREPROD_Reliability:
+# - name: "[DTS - Atlassian – Crowd (PREPROD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - Atlassian – Crowd (PREPROD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Crowd_PREPROD_Reliability'
+
+
+# DTS_Atlassian_Crowd_PROD_Reliability:
+# - name: "[DTS - Atlassian – Crowd (PROD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - Atlassian – Crowd (PROD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Crowd_PROD_Reliability'
+
+
+# DTS_Atlassian_Jira_PREPROD_Reliability:
+# - name: "[DTS - Atlassian – Jira (PREPROD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - Atlassian – Jira (PREPROD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Jira_PREPROD_Reliability'
+
+
+# DTS_Atlassian_Jira_PROD_Reliability:
+# - name: "[DTS - Atlassian – Jira (PROD)] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - Atlassian – Jira (PROD))"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_Atlassian_Jira_PROD_Reliability'
+
+
+# DTS_FACT_Reliability:
+# - name: "[DTS - FACT] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(DTS - FACT)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.DTS_FACT_Reliability'
+
+
+# FH_CVP_PROD_Reliability:
+# - name: "[FH - CVP - PROD] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(FH - CVP - PROD)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.FH_CVP_PROD_Reliability'
+
+
+# FH_PIP_Prod_Reliability:
+# - name: "[FH - PIP - Prod] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(FH - PIP - Prod)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.FH_PIP_Prod_Reliability'
+
+
+# FH_VH_PROD_Reliability:
+# - name: "[FH - VH - PROD] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(FH - VH - PROD)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.FH_VH_PROD_Reliability'
+
+
+# Future_Operations_Reliability:
+# - name: "[Future Operations - 8x8] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(Future Operations - 8x8)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.Future_Operations_Reliability'
+
+
+# ITOM_POC_Reliability:
+# - name: "[ITOM POC] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(ITOM POC)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.ITOM_POC_Reliability'
+
+
+# SVCOFF_Reliability:
+# - name: "[SVCOFF] Reliability"
+# - metricExpression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+# - entitySelector: "type(SERVICE), mzName(SVCOFF)"
+# - target: '98'
+# - warning: '99'
+# - metricKey: 'func:slo.SVCOFF_Reliability'
