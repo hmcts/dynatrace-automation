@@ -86,6 +86,7 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'DCD-CFT-Sandbox'
+              overrideAction: ${{ parameters.overrideAction }}
 
   - ${{ each environment in parameters.dynatrace_environments }}:
     - stage: ${{ environment.name }}
