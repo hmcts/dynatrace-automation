@@ -6,7 +6,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.58.0"
+      version = "3.36.0"
     }
     dynatrace = {
       source  = "dynatrace-oss/dynatrace"
